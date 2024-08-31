@@ -13,6 +13,7 @@ const ThemeSwap = () => {
       type="checkbox" 
       className="theme-controller"  
       checked={isDark}
+      onChange={() => {}}
       />
 
     {/* sun icon */}
