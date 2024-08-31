@@ -1,32 +1,37 @@
 'use client'
+import { useThemeStore } from '@fleetwood/store/useThemeStore'
 import React, { useEffect, useState } from 'react'
+import { twMerge } from 'tailwind-merge'
 
-const ParallaxBg = ({active = true}) => {
+const ParallaxBg = ({active = true}: {active: boolean}) => {
+  const {isDark} = useThemeStore()
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
 
-  const handleMouseMove = (event: MouseEvent) => {
-    if (!active) return
-    setMousePos({ x: event.clientX, y: event.clientY })
-  }
-
   useEffect(() => {
-
-    if (active) {
-      window.addEventListener("mousemove", handleMouseMove)
-    } else {
-      window.removeEventListener("mousemove", handleMouseMove)
+    if (!active) return
+    
+    const handleMouseMove = (event: MouseEvent) => {
+      if (!active) return
+      setMousePos({ x: event.clientX, y: event.clientY })
     }
 
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-    }
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [active])
 
   return (
     <div className="absolute inset-0">
       <div
-        className="bg-[url('/img/bg.png')] bg-cover bg-no-repeat -ml-[600px] -mt-[200px] h-[1536px] w-[3072px] transition-transform duration-75 ease-in-out"
-        style={{transform: `translate(${mousePos.x * -0.1}px, ${mousePos.y * -0.1}px)`}}
+        className={twMerge(
+          isDark 
+            ? "bg-[url('/img/dark-high-bg.png')]" 
+            : "bg-[url('/img/light-high-bg.png')]",
+          "bg-center bg-cover bg-no-repeat",
+          "-ml-[50px] -mt-[50px]",
+          "h-[1715px] w-[4096px]",
+          "transition-transform duration-200 ease-out"
+        )}
+        style={{transform: `translate(${mousePos.x * -0.02}px, ${mousePos.y * -0.02}px)`}}
       />
     </div>
   )
