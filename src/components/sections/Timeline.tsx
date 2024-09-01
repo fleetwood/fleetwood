@@ -10,7 +10,7 @@ type TimelineProps = ChildContentOptional &
 
 const Timeline = (props: TimelineProps) => {
   return (
-    <div className="w-full">
+    <div className={twMerge("w-full", props.className)}>
       {props.title && <h2>{props.title}</h2>}
 
       <ul className={twMerge("timeline", props.vertical && 'timeline-vertical')}>
