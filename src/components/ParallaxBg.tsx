@@ -1,10 +1,11 @@
 'use client'
 import { usePlxStore } from '@fleetwood/store/usePlxStore'
 import { useThemeStore } from '@fleetwood/store/useThemeStore'
+import { ClassName } from '@fleetwood/types/ClassName'
 import React, { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-const ParallaxBg = () => {
+const ParallaxBg = ({className}:ClassName) => {
   const {active} = usePlxStore()
   const {isDark} = useThemeStore()
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
@@ -22,7 +23,7 @@ const ParallaxBg = () => {
   }, [active])
 
   return (
-    <div className="absolute inset-0 z-0">
+    <div className={twMerge("", className)}>
       <div
         className={twMerge(
           isDark 

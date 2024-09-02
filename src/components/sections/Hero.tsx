@@ -12,7 +12,7 @@ const Hero = (props: HeroProps) => {
   return (
     <div
       className={twMerge(
-        "w-full p-20 my-20 rounded-2xl",
+        "w-full p-20 my-20 rounded-2xl bg-base-100/50 text-base-content",
         "border border-opacity-20",
         "border-b-neutral border-r-neutral ",
         "border-t-black border-l-black ",
