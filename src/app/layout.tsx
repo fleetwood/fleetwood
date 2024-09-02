@@ -1,7 +1,7 @@
-import MainNav from "@fleetwood/components/nav/MainNav";
-import ParallaxBg from "@fleetwood/components/ParallaxBg";
-import { ThemeProvider } from "@fleetwood/components/providers/ThemeProvider";
-import Footer from "@fleetwood/components/sections/Footer";
+import MainNav from "@components/nav/MainNav";
+import ParallaxBg from "@components/ParallaxBg";
+import { ThemeProvider } from "@components/providers/ThemeProvider";
+import Footer from "@components/sections/Footer";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { twMerge } from "tailwind-merge";

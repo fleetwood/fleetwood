@@ -1,5 +1,5 @@
-import Hero from "@fleetwood/components/sections/Hero";
-import Colors from "@fleetwood/components/ui/Colors";
+import Hero from "@components/sections/Hero";
+import Colors from "@components/ui/Colors";
 import { } from "next/font/local";
 
 export const metadata = {

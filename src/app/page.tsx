@@ -1,8 +1,8 @@
-import Hero from "@fleetwood/components/sections/Hero";
-import Timeline from "@fleetwood/components/sections/Timeline";
-import Milestone from "@fleetwood/components/sections/timeline/Milestone";
-import Colors from "@fleetwood/components/ui/Colors";
-import {} from "next/font/local";
+import Hero from "@components/sections/Hero";
+import Colors from "@components/ui/Colors";
+import { addArticle } from "@lib/linguistics";
+import { } from "next/font/local";
+import RootLayout from "./layout";
 
 export const metadata = {
   title: "Fleetwood | Hi!",
@@ -10,17 +10,18 @@ export const metadata = {
 }
 
 export default function Home() {
+  const roles = ["leader", "engineer", "solver", "collaborator", "mentor", "ally"]
 
   return (
-    <div>
-      <Hero title="Hi">
-        <h3>I&apos;m <span className="font-bold">Fleetwood</span></h3>
-        <h4>I am a leader.</h4>
-        <h4>I am an engineer.</h4>
-        <h4>I am a solver.</h4>
-      </Hero>
+    <RootLayout footer={false}>
+      <div>
+        <Hero title="Hi">
+          <h3>I&apos;m <span className="font-bold">Fleetwood</span></h3>
+          <h4>I am {addArticle(roles[Math.floor(Math.random() * roles.length)])}.</h4>
+        </Hero>
 
-      <Colors />  
-    </div>
+        <Colors />  
+      </div>
+    </RootLayout>
   );
 }

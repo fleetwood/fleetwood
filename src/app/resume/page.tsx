@@ -1,6 +1,6 @@
-import Hero from "@fleetwood/components/sections/Hero";
-import Timeline from "@fleetwood/components/sections/Timeline";
-import Milestone from "@fleetwood/components/sections/timeline/Milestone";
+import Hero from "@components/sections/Hero";
+import Timeline from "@components/sections/Timeline";
+import Milestone from "@components/sections/timeline/Milestone";
 import {} from "next/font/local";
 
 export const metadata = {
