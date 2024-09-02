@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { IconMoon, IconSun } from '../icons/Icons'
+'use client'
 import { useThemeStore } from '@fleetwood/store/useThemeStore';
+import { IconMoon, IconSun } from '../icons/Icons';
 
 const ThemeSwap = () => {
-  const { theme, toggleTheme } = useThemeStore();
-  const isDark = theme === "dark";
+  const { isDark, toggleTheme } = useThemeStore();
 
   return (
-    <label className="swap swap-rotate">
-    {/* this hidden checkbox controls the state */}
+    <label className="swap swap-rotate
+        btn btn-sm group-hover:btn-md btn-circle 
+        btn-base-100 text-base-content border-none
+        hover:btn-secondary hover:text-white 
+        transition-all duration-200 ease-in-out
+      ">
     <input 
       type="checkbox" 
       className="theme-controller"  
@@ -16,11 +19,9 @@ const ThemeSwap = () => {
       onChange={() => {}}
       />
 
-    {/* sun icon */}
-    <IconSun className="swap-off h-10 w-10 fill-current" onClick={toggleTheme} />
+    <IconSun className="swap-off h-4 w-4 group-hover:h-6 group-hover:w-6" onClick={toggleTheme} />
 
-    {/* moon icon */}
-    <IconMoon className="swap-on h-10 w-10 fill-current" onClick={toggleTheme} />
+    <IconMoon className="swap-on h-4 w-4 group-hover:h-6 group-hover:w-6" onClick={toggleTheme} />
   </label>
   )
 }
