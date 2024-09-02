@@ -12,14 +12,15 @@ const Hero = (props: HeroProps) => {
   return (
     <div
       className={twMerge(
-        "w-full p-20 my-20 rounded-2xl bg-base-100/50 text-base-content",
+        "w-full p-10 pb-14 mt-10 mb-20 rounded-2xl bg-base-100/50 text-base-content",
         "border border-opacity-20",
         "border-b-neutral border-r-neutral ",
         "border-t-black border-l-black ",
         props.className
       )}
     >
-      <h1>{props.title}</h1>
+      <h1 className="text-center mt-0">{props.title}</h1>
+      <div className="divider divider-info-content"></div>
       {props.children}
     </div>
   );
