@@ -1,6 +1,6 @@
-import { ChildContent } from "@fleetwood/types/ReactChildren";
-import ParallaxSwap from "./ParallaxSwap";
-import ThemeSwap from "./ThemeSwap";
+import { ChildContent } from "@fleetwood/types/ReactChildren"
+import ParallaxSwap from "./ParallaxSwap"
+import ThemeSwap from "./ThemeSwap"
 
 const MainNav = () => {
   const NavButton = ({ children }: ChildContent & {}) => {
@@ -8,33 +8,34 @@ const MainNav = () => {
       <div
         className="
         transition-colors duration-200 ease-in-out 
-        w-full p-4 z-[1]
-        cursor-pointer text-center text-base-content
+        h-full w-full p-4
+        cursor-pointer text-center text-black
         hover:text-white hover:bg-primary"
       >
         {children}
       </div>
-    );
-  };
+    )
+  }
   return (
     <nav
       className="
         transition-all duration-200 ease-in-out
-        flex items-center justify-evenly 
-        mx-4 px-4 w-full 
-        rounded-b-xl
+        group relative flex items-center justify-evenly 
         font-light uppercase
-        bg-neutral text-neutral-content
+        w-full max-w-5xl rounded-b-xl -my-4 px-4
+        opacity-50 bg-base-100
+        hover:my-0 hover:opacity-100
         "
       >
       <NavButton>home</NavButton>
       <NavButton>resume</NavButton>
       <NavButton>about</NavButton>
-
-      <ParallaxSwap />
-      <ThemeSwap />
+      <span className="flex gap-2">
+        <ParallaxSwap />
+        <ThemeSwap />
+      </span>
     </nav>
-  );
-};
+  )
+}
 
-export default MainNav;
+export default MainNav

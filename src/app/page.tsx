@@ -1,3 +1,4 @@
+import Hero from "@fleetwood/components/sections/Hero";
 import Timeline from "@fleetwood/components/sections/Timeline";
 import Milestone from "@fleetwood/components/sections/timeline/Milestone";
 import {} from "next/font/local";
@@ -68,6 +69,12 @@ export default function Home() {
 
   return (
     <div className="w-full overflow-y-scroll">
+      <Hero title="Hi">
+        <h3>I'm <span className="font-bold">Fleetwood</span></h3>
+        <h4>I am a leader.</h4>
+        <h4>I am an engineer.</h4>
+        <h4>I am a solver.</h4>
+      </Hero>
       <Timeline title="History" vertical>
         {albums.map((album, index) => (
           <Milestone

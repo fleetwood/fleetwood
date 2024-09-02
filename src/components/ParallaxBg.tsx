@@ -22,7 +22,7 @@ const ParallaxBg = () => {
   }, [active])
 
   return (
-    <div className="absolute inset-0">
+    <div className="absolute inset-0 z-0">
       <div
         className={twMerge(
           isDark 
@@ -31,7 +31,7 @@ const ParallaxBg = () => {
           "bg-center bg-cover bg-no-repeat",
           "-ml-[50px] -mt-[50px]",
           "h-[1715px] w-[4096px]",
-          "transition-transform duration-200 ease-out z-0"
+          "transition-transform duration-200 ease-out"
         )}
         style={{transform: `translate(${mousePos.x * -0.02}px, ${mousePos.y * -0.02}px)`}}
       />

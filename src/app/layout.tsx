@@ -25,10 +25,10 @@ export default function RootLayout({children}: Readonly<ChildContent>) {
       <ThemeProvider>
         <body className={twMerge(
           inter.className,
-          "flex flex-col items-center justify-between gap-12 overflow-hidden"
+          "flex flex-col items-center overflow-hidden"
           )}>
           <Header />
-          <main className="flex flex-col items-center h-fit w-full max-w-5xl px-12 pb-12">
+          <main className="h-fit w-full max-w-5xl px-12 pb-12 relative">
             {children}
           </main>
         </body>

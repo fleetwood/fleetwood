@@ -6,16 +6,23 @@ const ParallaxSwap = () => {
   const { active, toggle } = usePlxStore();
   return (
     <div
-      className="tooltip tooltip-bottom tooltip-secondary text-secondary-content pl-4"
+      className="tooltip tooltip-bottom tooltip-secondary pl-4"
       data-tip={`Toggle parallax ${active ? "off" : "on"}`}
     >
       <label className="swap swap-rotate 
-        btn btn-circle btn-accent text-accent-content 
-        hover:btn-secondary hover:bg-accent hover:text-white 
+        btn btn-sm group-hover:btn-md btn-circle 
+        btn-base-100 text-base-content border-none
+        hover:btn-secondary hover:text-white 
+        transition-all duration-200 ease-in-out
         ">
-        <input type="checkbox" />
-        <IconExpand className="swap-on h-6 w-6" onClick={toggle} />
-        <IconMonitorX className="swap-off h-6 w-6" onClick={toggle} />
+        <input 
+          type="checkbox" 
+          className="theme-controller"  
+          checked={active}
+          onChange={() => {}}
+          />
+        <IconExpand className="swap-on h-4 w-4 group-hover:h-6 group-hover:w-6" onClick={toggle} />
+        <IconMonitorX className="swap-off h-4 w-4 group-hover:h-6 group-hover:w-6" onClick={toggle} />
       </label>
     </div>
   );

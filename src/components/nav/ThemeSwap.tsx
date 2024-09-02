@@ -7,9 +7,11 @@ const ThemeSwap = () => {
 
   return (
     <label className="swap swap-rotate
-        btn btn-circle btn-accent text-accent-content 
-        hover:btn-secondary hover:bg-accent hover:text-white 
-        ">
+        btn btn-sm group-hover:btn-md btn-circle 
+        btn-base-100 text-base-content border-none
+        hover:btn-secondary hover:text-white 
+        transition-all duration-200 ease-in-out
+      ">
     <input 
       type="checkbox" 
       className="theme-controller"  
@@ -17,9 +19,9 @@ const ThemeSwap = () => {
       onChange={() => {}}
       />
 
-    <IconSun className="swap-off h-10 w-10 fill-current" onClick={toggleTheme} />
+    <IconSun className="swap-off h-4 w-4 group-hover:h-6 group-hover:w-6" onClick={toggleTheme} />
 
-    <IconMoon className="swap-on h-10 w-10 fill-current" onClick={toggleTheme} />
+    <IconMoon className="swap-on h-4 w-4 group-hover:h-6 group-hover:w-6" onClick={toggleTheme} />
   </label>
   )
 }
