@@ -1,12 +1,10 @@
-import MainNav from "@components/nav/MainNav";
 import ParallaxBg from "@components/ParallaxBg";
 import { ThemeProvider } from "@components/providers/ThemeProvider";
-import Footer from "@components/sections/Footer";
+import { ChildContent } from "@fleetwood/types/ReactChildren";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 import "./globals.css";
-import { ChildContent } from "@fleetwood/types/ReactChildren";
 
 const inter = Inter({ subsets: ["latin"] });
 

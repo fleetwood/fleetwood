@@ -29,12 +29,55 @@ body {
 h1 {
   @apply text-8xl font-extrabold;
 }
+
 h2 {
   @apply text-6xl font-bold;
 }
+
 h3 {
   @apply text-4xl font-thin;
 }
+
 h4 {
   @apply text-2xl font-extralight;
+}
+
+@layer components {
+
+  .bg-blur {
+    @apply backdrop-filter backdrop-blur-sm
+  }
+
+  .bg-blur-md {
+    @apply backdrop-filter backdrop-blur-md
+  }
+
+  .bg-blur-lg {
+    @apply backdrop-filter backdrop-blur-lg
+  }
+
+  .bg-blur-xl {
+    @apply backdrop-filter backdrop-blur-xl
+  }
+
+  .bg-blur-2xl {
+    @apply backdrop-filter backdrop-blur-2xl
+  }
+
+  .bg-blur-3xl {
+    @apply backdrop-filter backdrop-blur-3xl
+  }
+
+  .bg-glass {
+    @apply bg-blur-md bg-gradient-to-tl bg-base-100/50 from-glass-start to-glass-end;
+  }
+
+  .spacing-wide {
+    letter-spacing: 2em;
+  }
+
+  .spacing-normal {
+    letter-spacing: 0;
+  }
+
 }
