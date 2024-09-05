@@ -51,20 +51,20 @@ const RoleHero = ({className, items}: HeroProps) => {
       {role &&
       <div className="flex sticky top-0 justify-evenly w-full h-full">
         <div className="flex-grow min-w-1/2 px-10">
-          <h2 className="text-center mt-4">I&apos;m <span className="font-bold">Fleetwood</span></h2>
+          <h3 className="text-center mt-4">I&apos;m Fleetwood</h3>
           <div className="divider divider-info-content"></div>
           <div className="flex flex-grow h-full w-full justify-stretch">
             <div className="flex flex-col overflow-hidden">
               <div className="w-full h-8">
                 <h4 className={twMerge("overflow-hidden whitespace-nowrap relative")}>
-                  I am&nbsp;
+                  I&apos;m&nbsp;
                   <Transition show={show} appear={true}
                     enter    = 'absolute transition-all ease-out duration-500'
                     enterFrom= 'absolute opacity-0 ml-10 spacing-wide'
                     leave    = 'absolute transition-all ease-out duration-500'
                     leaveTo  = 'absolute opacity-0 spacing-wide'
                     >
-                    <span className="text-accent">{addArticle(role.role)}</span>
+                    <span className="text-primary">{addArticle(role.role)}</span>
                   </Transition>
                 </h4>
               </div>
