@@ -73,18 +73,14 @@ export default function ResumePage() {
   ];
   return (
     <div>
-      <Hero title="Hi">
-        <h3>I&apos;m <span className="font-bold">Fleetwood</span></h3>
-        <h4>I am a leader.</h4>
-        <h4>I am an engineer.</h4>
-        <h4>I am a solver.</h4>
+      <Hero title="History">
+        Oh, the places I&apos;ve been!
       </Hero>
-      <Timeline title="History" vertical>
+      <Timeline vertical>
         {albums.map((album, index) => (
           <Milestone
             key={index}
             title={album.artist}
-            ltr={index % 2 === 0}
             first={index === 0}
             last={index === albums.length - 1}
           >

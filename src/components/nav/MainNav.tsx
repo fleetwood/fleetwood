@@ -5,6 +5,7 @@ import ThemeSwap from "./ThemeSwap"
 import { ClassName } from "@fleetwood/types/ClassName"
 import { twMerge } from "tailwind-merge"
 import Link from "next/link"
+import { FleetwoodLogo } from "../icons/Icons"
 
 const NavButton = ({ children, href }: ChildContent & {href: string}) => {
   return (
@@ -30,14 +31,14 @@ const MainNav = ({className}:ClassName) => {
         "relative flex items-center justify-evenly z-10 group",
         "font-light uppercase",
         "w-full max-w-5xl rounded-b-xl px-4 opacity-50 ",
-        "bg-info text-info-content dark:text-base-content",
+        "bg-info text-info-content",
         "hover:opacity-100",
         className)}
       >
-      <NavButton href={'/'}>home</NavButton>
+      <Link href={'/'} className="btn border-none btn-circle btn-base-100 hover:btn-secondary mr-4 my-2 scale-75 group-hover:scale-100"><FleetwoodLogo height={20} /></Link>  
       <NavButton href={'/resume'}>resume</NavButton>
       <NavButton href={'/about'}>about</NavButton>
-      <span className="flex gap-2">
+      <span className="flex align-middle gap-2">
         <ParallaxSwap />
         <ThemeSwap />
       </span>
