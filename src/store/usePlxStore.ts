@@ -11,8 +11,8 @@ export const usePlxStore = create<PlxState>()(
     (set) => ({
       active: false,
       toggle: () => set((state) => ({
-          active: state.active = !state.active,
-        })),
+        active: state.active = !state.active,
+      })),
     }),
     {
       name: 'plx-storage',

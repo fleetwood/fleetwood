@@ -10,10 +10,11 @@ const NavButton = ({ children, href }: ChildContent & {href: string}) => {
   return (
     <Link
       className="
-      transition-colors duration-200 ease-in-out 
-      h-full w-full p-4
+      transition-all duration-200 ease-in-out 
+      h-full w-full py-1
       cursor-pointer text-center 
-      bg-primary/0 hover:text-white hover:bg-primary"
+      bg-primary/0
+      hover:text-white hover:bg-primary group-hover:py-4"
       href={href}
     >
       {children}
@@ -26,10 +27,10 @@ const MainNav = ({className}:ClassName) => {
     <nav
       className={twMerge(
         "transition-all duration-200 ease-in-out",
-        "relative flex items-center justify-evenly z-10",
+        "relative flex items-center justify-evenly z-10 group",
         "font-light uppercase",
         "w-full max-w-5xl rounded-b-xl px-4 opacity-50 ",
-        "bg-info text-neutral-content",
+        "bg-info text-info-content dark:text-base-content",
         "hover:opacity-100",
         className)}
       >
