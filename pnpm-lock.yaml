@@ -1106,7 +1106,7 @@ packages:
       supports-color: 5.5.0
     dev: true
 
-  /decimal.js-light@2.5.1:
+  /decimal.js-white@2.5.1:
     resolution: {integrity: sha512-qIMFpTMZmny+MMIitAB6D7iVPEorVw6YQRWkvarTkT4tBeSLLiHzcwj6q0MmYSFCiVpiqPJTJEYIrpcPzVEIvg==}
     dev: false
 
@@ -2810,7 +2810,7 @@ packages:
   /recharts-scale@0.4.5:
     resolution: {integrity: sha512-kivNFO+0OcUNu7jQquLXAxz1FIwZj8nrj+YkOKc5694NbjCvcT6aSZiIzNzd2Kul4o4rTto8QVR9lMNtxD4G1w==}
     dependencies:
-      decimal.js-light: 2.5.1
+      decimal.js-white: 2.5.1
     dev: false
 
   /recharts@2.12.7(react-dom@18.3.1)(react@18.3.1):

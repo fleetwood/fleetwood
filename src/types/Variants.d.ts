@@ -11,4 +11,4 @@ export type VariantType =
   | "error"
   | "black"
   | "white"
-  | "neutral"
+  | "-base-100"
