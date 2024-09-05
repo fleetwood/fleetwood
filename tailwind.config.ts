@@ -15,7 +15,15 @@ const config: Config = {
 			},
 			colors: {
         'glass-start': 'rgba(theme(colors.base-100), 0.2)',
-        'glass-end': 'rgba(theme(colors.base-100), 0.4)',
+        'glass-end'  : 'rgba(theme(colors.base-100), 0.4)',
+        black: {
+          DEFAULT: colors.light.black.DEFAULT,
+          dark   : colors.dark.black.DEFAULT
+        },
+        white: {
+          DEFAULT: colors.light.white.DEFAULT,
+          dark   : colors.dark.white.DEFAULT
+        },
       },
 		},
 	},
@@ -23,30 +31,22 @@ const config: Config = {
     themes: [
       {
         light: {
-          "primary"  : colors.light.primary.DEFAULT,
-          "secondary": colors.light.secondary.DEFAULT,
-          "accent"   : colors.light.accent.DEFAULT,
-          "info"     : colors.light.info.DEFAULT,
-          "base-100"     : colors.light.white.DEFAULT,
-          "success"  : colors.light.success.DEFAULT,
-          "error"    : colors.light.error.DEFAULT,
-          "black"    : colors.light.black.DEFAULT,
-          "white"    : colors.light.white.DEFAULT,
-          "neutral"  : colors.light.neutral.DEFAULT,
+          "base-100": colors.light.base.DEFAULT,
+          primary   : colors.light.primary.DEFAULT,
+          secondary : colors.light.secondary.DEFAULT,
+          accent    : colors.light.accent.DEFAULT,
+          success   : colors.light.success.DEFAULT,
+          error     : colors.light.error.DEFAULT,
         }
       },
       {
         dark: {
-          "primary"  : colors.dark.primary.DEFAULT,
-          "secondary": colors.dark.secondary.DEFAULT,
-          "accent"   : colors.dark.accent.DEFAULT,
-          "info"     : colors.dark.info.DEFAULT,
-          "base-100"     : colors.dark.black.DEFAULT,
-          "success"  : colors.dark.success.DEFAULT,
-          "error"    : colors.dark.error.DEFAULT,
-          "black"    : colors.dark.black.DEFAULT,
-          "white"    : colors.dark.white.DEFAULT,
-          "neutral"  : colors.dark.neutral.DEFAULT,
+          "base-100": colors.dark.base.DEFAULT,
+          primary   : colors.dark.primary.DEFAULT,
+          secondary : colors.dark.secondary.DEFAULT,
+          accent    : colors.dark.accent.DEFAULT,
+          success   : colors.dark.success.DEFAULT,
+          error     : colors.dark.error.DEFAULT,
         }
       },
     ]

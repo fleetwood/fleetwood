@@ -15,7 +15,7 @@ const Milestone = (props:MilestoneProps) => {
   return (
     <li className="gap-x-4 group cursor-default text-base-content opacity-80 hover:opacity-100">
       {!props.first && <hr className="bg-primary group-hover:bg-white transition-colors duration-200 ease-in-out" />}
-      <div className={twMerge("timeline-start", props.ltr && "timeline-box bg-info p-4")}>
+      <div className={twMerge("timeline-start", props.ltr && "timeline-box bg-base-100 p-4")}>
         {props.ltr ? props.children : <h3 className='bg-primary px-8 py-2 rounded-full'>{props.title}</h3>}
       </div>
       <div className={twMerge("timeline-middle")}>
@@ -23,7 +23,7 @@ const Milestone = (props:MilestoneProps) => {
           <IconLightbulb className="h-6 w-6" />
         </div>
       </div>
-      <div className={twMerge("timeline-end", !props.ltr && "timeline-box bg-info p-4")}>
+      <div className={twMerge("timeline-end", !props.ltr && "timeline-box bg-base-100 p-4")}>
         {props.ltr ? <h3 className='bg-primary px-8 py-2 rounded-full'>{props.title}</h3> : props.children}
       </div>
       {!props.last && <hr className="bg-primary group-hover:bg-white transition-colors duration-200 ease-in-out" />}

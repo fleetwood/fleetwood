@@ -29,9 +29,9 @@ const MainNav = ({className}:ClassName) => {
       className={twMerge(
         "transition-all duration-200 ease-in-out",
         "relative flex items-center justify-evenly z-10 group",
-        "font-light uppercase",
+        "font-white uppercase",
         "w-full max-w-5xl rounded-b-xl px-4 opacity-50 ",
-        "bg-info text-info-content",
+        "bg-base-100 text-base-content",
         "hover:opacity-100",
         className)}
       >

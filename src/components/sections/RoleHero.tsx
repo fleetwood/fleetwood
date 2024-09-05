@@ -43,7 +43,7 @@ const RoleHero = ({className, items}: HeroProps) => {
         "relative group w-full mt-10 mb-20 rounded-2xl",
         "text-base-content bg-glass",
         "border border-opacity-20 overflow-hidden",
-        "border-b-neutral border-r-neutral ",
+        "border-b-base-100 border-r-base-100 ",
         "border-t-black border-l-black ",
         className
       )}
@@ -52,7 +52,7 @@ const RoleHero = ({className, items}: HeroProps) => {
       <div className="flex sticky top-0 justify-evenly w-full h-full">
         <div className="flex-grow min-w-1/2 px-10">
           <h3 className="text-center mt-4">I&apos;m Fleetwood</h3>
-          <div className="divider divider-info-content"></div>
+          <div className="divider divider-primary-content"></div>
           <div className="flex flex-grow h-full w-full justify-stretch">
             <div className="flex flex-col overflow-hidden">
               <div className="w-full h-8">
