@@ -1,13 +1,13 @@
 import { ClassName } from "@fleetwood/types/ClassName";
-import React from "react";
+import { LuGithub, LuLinkedin } from "react-icons/lu";
 import { twMerge } from "tailwind-merge";
+import NavButton from "../ui/buttons/NavButton";
 
 const Footer = ({className}:ClassName) => {
   return (
-    <div className={twMerge("rounded-t-lg bg-base-100 text-base-content p-4 w-full max-w-5xl relative", className)}>
-      <div className="grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        this is a link
-      </div>
+    <div className={twMerge("flex gap-4 justify-end rounded-t-lg bg-base-100 text-base-content p-4 w-full max-w-5xl relative", className)}>
+      <NavButton href="https://github.com/fleetwood" className='p-3 bg-base-200 hover:bg-secondary'><LuGithub className="h-6 w-6" /></NavButton>
+      <NavButton href="https://www.linkedin.com/in/jfleetwood/" className='p-3 bg-base-200 hover:bg-secondary'><LuLinkedin className="h-6 w-6" /></NavButton>
     </div>
   );
 };

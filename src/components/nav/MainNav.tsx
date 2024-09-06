@@ -1,27 +1,11 @@
 'use client'
-import { ChildContent } from "@fleetwood/types/ReactChildren"
+import { ClassName } from "@fleetwood/types/ClassName"
+import Link from "next/link"
+import { twMerge } from "tailwind-merge"
+import { FleetwoodLogo } from "../icons/Icons"
 import ParallaxSwap from "./ParallaxSwap"
 import ThemeSwap from "./ThemeSwap"
-import { ClassName } from "@fleetwood/types/ClassName"
-import { twMerge } from "tailwind-merge"
-import Link from "next/link"
-import { FleetwoodLogo } from "../icons/Icons"
-
-const NavButton = ({ children, href }: ChildContent & {href: string}) => {
-  return (
-    <Link
-      className="
-      transition-all duration-200 ease-in-out 
-      h-full w-full py-1
-      cursor-pointer text-center 
-      bg-primary/0
-      hover:text-white hover:bg-primary group-hover:py-4"
-      href={href}
-    >
-      {children}
-    </Link>
-  )
-}
+import NavMenuItem from "./NavMenuItem"
 
 const MainNav = ({className}:ClassName) => {
   return (
@@ -36,8 +20,8 @@ const MainNav = ({className}:ClassName) => {
         className)}
       >
       <Link href={'/'} className="btn border-none btn-circle btn-base-100 hover:btn-secondary mr-4 my-2 scale-75 group-hover:scale-100"><FleetwoodLogo height={20} /></Link>  
-      <NavButton href={'/resume'}>resume</NavButton>
-      <NavButton href={'/about'}>about</NavButton>
+      <NavMenuItem href={'/resume'}>resume</NavMenuItem>
+      <NavMenuItem href={'/about'}>about</NavMenuItem>
       <span className="flex align-middle gap-2">
         <ParallaxSwap />
         <ThemeSwap />
