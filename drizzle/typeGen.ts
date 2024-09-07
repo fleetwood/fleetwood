@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import pluralize from 'pluralize';
+import chalk from 'chalk';
 
 const ignoreFiles = [
   'enum.ts',
@@ -8,50 +9,40 @@ const ignoreFiles = [
   'index.ts'
 ]
 
+const typeDef = (tableName:string, typeName:string) => `
+/** THIS IS A GENERATED FILE. DO NOT EDIT **/
+import { InferSelectModel, InferInsertModel } from 'drizzle-orm';
+import ${tableName} from '../schema/${tableName}';
+
+export type ${typeName} = InferSelectModel<typeof ${tableName}>;
+export type ${typeName}Create = InferInsertModel<typeof ${tableName}>;
+`;
+
 async function generateTypes() {
   const root = "./"
   const schemaDir = path.join(root, 'drizzle', 'schema');
   const typesDir = path.join(root, 'drizzle', 'types');
 
-  // Ensure the types directory exists
   if (!fs.existsSync(typesDir)) {
     fs.mkdirSync(typesDir, { recursive: true });
   }
 
-  // Read all schema files
   const files = fs.readdirSync(schemaDir);
-
-  // Filter out ignored files
   const schemaFiles = files.filter(file => !ignoreFiles.includes(file) && file.endsWith('.ts'));
 
-  // Prepare content for the types file
-  let typesContent = '';
+  console.log(chalk.yellow('🚛 Generating types 🚛'))
 
   for (const file of schemaFiles) {
-    const filePath = path.join(schemaDir, file);
-    
-    // Import the default export from each file as 't'
-    const tableName = path.basename(file, '.ts'); // Get file name without extension
-    const typeName = pluralize.singular(tableName.charAt(0).toUpperCase() + tableName.slice(1)); // Convert to singular and capitalize first letter
-
-    typesContent += `
-/** THIS IS A GENERATED FILE. DO NOT EDIT **/
-import { InferSelectModel } from 'drizzle-orm'
-import ${tableName} from '../schema/${tableName}'
-
-export type ${typeName} = InferSelectModel<typeof ${tableName}>
-export type ${typeName}Create = InferInsertModel<typeof ${tableName}>
-`;
-    
-    // Write the types file
+    const tableName      = path.basename(file, '.ts');
+    const typeName       = pluralize.singular(tableName.charAt(0).toUpperCase() + tableName.slice(1));
+    const def            = typeDef(tableName, typeName)
     const outputFilePath = path.join(typesDir, typeName+'.d.ts');
-    fs.writeFileSync(outputFilePath, typesContent.trim());
-    console.log(`\tGenerated types for ${typeName}...`)
+
+    fs.writeFileSync(outputFilePath, def);
+    console.log(`\tGenerated ${typeName}...`)
   }
 }
 
-// Usage
-// Call the function with the appropriate parameters
 generateTypes()
-  .then(() => console.log('Types generated successfully!'))
-  .catch(err => console.error('Error generating types:', err));
+  .then(() => console.log(chalk.green('💃💃 Types generated successfully! 💃💃')))
+  .catch(err => console.error(chalk.red('😡😡😡 Error generating types:', err)));
