@@ -12,7 +12,7 @@ const ignoreFiles = [
 const typeDef = (tableName:string, typeName:string) => `
 /** THIS IS A GENERATED FILE. DO NOT EDIT **/
 import { InferSelectModel, InferInsertModel } from 'drizzle-orm';
-import ${tableName} from '../schema/${tableName}';
+import { ${tableName} } from '../schema/${tableName}';
 
 export type ${typeName} = InferSelectModel<typeof ${tableName}>;
 export type ${typeName}Create = InferInsertModel<typeof ${tableName}>;
