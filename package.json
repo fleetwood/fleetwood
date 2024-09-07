@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "watcher": "concurrently \"nodemon --exec next dev\" \"tsc -w\""
+    "watcher": "concurrently \"nodemon --exec next dev\" \"tsc -w\"",
+    "db-gen": "bunx drizzle-kit generate",
+    "db-mig": "bunx drizzle-kit migrate",
+    "db-stu": "bunx drizzle-kit studio",
+    "db-types": "bun ./drizzle/typeGen.ts"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.4",

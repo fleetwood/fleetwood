@@ -1,0 +1,1 @@
+DROP TABLE "bb_lrt7vp8u4l0rncolilviohmja4_h0a1n7_drizzle"."users";

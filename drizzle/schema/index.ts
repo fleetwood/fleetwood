@@ -1,4 +1,4 @@
-export { text, uuid } from "drizzle-orm/pg-core/columns";
+export { text, uuid, timestamp } from "drizzle-orm/pg-core/columns";
 export { v4 as uniqueID } from 'uuid'; 
 import { pgSchema } from "drizzle-orm/pg-core";
 
