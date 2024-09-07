@@ -1,10 +1,11 @@
-import ParallaxBg from "@components/ParallaxBg";
-import { ThemeProvider } from "@components/providers/ThemeProvider";
+
+import "./globals.css";
 import { ChildContent } from "@fleetwood/types/ReactChildren";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { twMerge } from "tailwind-merge";
-import "./globals.css";
+import ParallaxBg from "@fleetwood/components/ParallaxBg";
+import { ThemeProvider } from "@fleetwood/components/providers/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
