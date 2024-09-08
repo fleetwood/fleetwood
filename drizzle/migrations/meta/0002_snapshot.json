@@ -1,0 +1,25 @@
+{
+  "id": "2bf31bb0-5e64-45a7-864a-e454f474d30d",
+  "prevId": "cbd2249f-926b-4f4e-9504-79e9d3d2cd6f",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {},
+  "enums": {
+    "bb_lrt7vp8u4l0rncolilviohmja4_h0a1n7_drizzle.colors": {
+      "name": "colors",
+      "schema": "bb_lrt7vp8u4l0rncolilviohmja4_h0a1n7_drizzle",
+      "values": [
+        "red",
+        "green",
+        "blue"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

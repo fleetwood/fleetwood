@@ -1,0 +1,2 @@
+ALTER TABLE "bb_lrt7vp8u4l0rncolilviohmja4_h0a1n7_drizzle"."users" ALTER COLUMN "id" SET DEFAULT gen_random_uuid();--> statement-breakpoint
+ALTER TABLE "bb_lrt7vp8u4l0rncolilviohmja4_h0a1n7_drizzle"."roles" ALTER COLUMN "id" SET DEFAULT 'a1799d95-837f-4c9f-a8cb-545b98bb7c24';

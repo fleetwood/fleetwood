@@ -1,0 +1,57 @@
+{
+  "id": "cbd2249f-926b-4f4e-9504-79e9d3d2cd6f",
+  "prevId": "5e833013-672a-4b1d-a72c-641674fea006",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "bb_lrt7vp8u4l0rncolilviohmja4_h0a1n7_drizzle.users": {
+      "name": "users",
+      "schema": "bb_lrt7vp8u4l0rncolilviohmja4_h0a1n7_drizzle",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "'91585fe4-4408-49f6-b40d-7cdc313fcfc3'"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "color": {
+          "name": "color",
+          "type": "colors",
+          "typeSchema": "bb_lrt7vp8u4l0rncolilviohmja4_h0a1n7_drizzle",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'red'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {
+    "bb_lrt7vp8u4l0rncolilviohmja4_h0a1n7_drizzle.colors": {
+      "name": "colors",
+      "schema": "bb_lrt7vp8u4l0rncolilviohmja4_h0a1n7_drizzle",
+      "values": [
+        "red",
+        "green",
+        "blue"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

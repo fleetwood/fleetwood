@@ -1,10 +1,8 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
-import { twMerge } from 'tailwind-merge';
 import { ChildContent } from '@/types/ReactChildren';
-import React from 'react';
-import chalk from 'chalk';
+import { useEffect, useRef, useState } from 'react';
 import { LuChevronDownSquare, LuChevronUpSquare } from 'react-icons/lu';
+import { twMerge } from 'tailwind-merge';
 
 const ContentSection = ({ children }: ChildContent) => {
   const [topScroll, setTopScroll] = useState(false);
