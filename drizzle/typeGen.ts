@@ -36,7 +36,7 @@ async function generateTypes() {
     const tableName      = path.basename(file, '.ts');
     const typeName       = pluralize.singular(tableName.charAt(0).toUpperCase() + tableName.slice(1));
     const def            = typeDef(tableName, typeName)
-    const outputFilePath = path.join(typesDir, typeName+'.d.ts');
+    const outputFilePath = path.join(typesDir, typeName+'.ts');
 
     fs.writeFileSync(outputFilePath, def);
     console.log(`\tGenerated ${typeName}...`)
