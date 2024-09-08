@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Fleetwood-s-workspace-h0a1n7.us-east-1.xata.sh/db/fleetwood-resume",
+  "codegen": {
+    "output": "db/xata.ts"
+  }
+}

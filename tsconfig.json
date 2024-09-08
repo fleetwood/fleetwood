@@ -1,29 +1,43 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "target": "es2017",
+    "lib"   : [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs"          : true,
+    "skipLibCheck"     : true,
+    "strict"           : true,
+    "noEmit"           : true,
+    "esModuleInterop"  : true,
+    "module"           : "esnext",
+    "moduleResolution" : "bundler",
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
+    "isolatedModules"  : true,
+    "jsx"              : "preserve",
+    "incremental"      : true,
+    "plugins"          : [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@fleetwood/*" : ["./src/*"],
-      "@components/*": ["./src/components/*"],
-      "@lib/*"       : ["./src/lib/*"],
-      "@types/*"     : ["./src/types/*"],
+      "@/ui/*"        : ["./src/components/ui/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/lib/*"       : ["./src/lib/*"],
+      "@/types/*"     : ["./src/types/*", "./drizzle/types/*"],
+      "@/db/*"        : ["./drizzle/*"],
+      "@/*"           : ["./src/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
