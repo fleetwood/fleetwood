@@ -1,6 +1,13 @@
+<<<<<<< Updated upstream
 import { IconLightbulb } from '@fleetwood/components/icons/Icons'
 import { ClassName } from '@fleetwood/types/ClassName'
 import { ChildContent, ReactNodeContent } from '@fleetwood/types/ReactChildren'
+=======
+import { IconLightbulb } from '@/components/icons/Icons'
+import { ClassName } from '@/types/ClassName'
+import { ChildContent, ReactNodeContent } from '@/types/ReactChildren'
+import Image from 'next/image'
+>>>>>>> Stashed changes
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 

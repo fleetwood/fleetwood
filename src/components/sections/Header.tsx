@@ -1,4 +1,4 @@
-import { ClassName } from '@fleetwood/types/ClassName';
+import { ClassName } from '@/types/ClassName';
 import MainNav from '../nav/MainNav';
 import ParallaxBg from '../ParallaxBg';
 

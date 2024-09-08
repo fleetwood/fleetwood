@@ -1,7 +1,7 @@
 'use client'
-import { usePlxStore } from '@fleetwood/store/usePlxStore'
-import { useThemeStore } from '@fleetwood/store/useThemeStore'
-import { ClassName } from '@fleetwood/types/ClassName'
+import { usePlxStore } from '@/store/usePlxStore'
+import { useThemeStore } from '@/store/useThemeStore'
+import { ClassName } from '@/types/ClassName'
 import React, { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 

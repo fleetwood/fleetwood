@@ -1,8 +1,15 @@
+<<<<<<< Updated upstream
 "use client";
 import Colors from "@components/ui/Colors";
 import MainNav from "@fleetwood/components/nav/MainNav";
 import RoleHero from "@fleetwood/components/sections/RoleHero";
 import { RoleProp } from "@fleetwood/types/RoleProp";
+=======
+import Colors from "@/components/ui/Colors";
+import MainNav from "@/components/nav/MainNav";
+import RoleHero from "@/components/sections/RoleHero";
+import { RoleProp } from "@/types/RoleProp";
+>>>>>>> Stashed changes
 import { } from "next/font/local";
 
 // export const metadata = {
@@ -45,12 +52,6 @@ const roles:RoleProp[] = [
 
 export default function Home() {
   return (
-    <div className="relative flex flex-col max-h-full max-w-5xl px-8 mx-auto overflow-hidden z-10">
-      <MainNav className="flex-shrink-0 sticky top-0" />
-      <main className="flex-grow overflow-y-auto my-2 relative">
-        <RoleHero items={roles} />
-        <Colors />
-      </main>
-    </div>
+    <RoleHero items={roles} />
   );
 }

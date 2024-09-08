@@ -1,11 +1,13 @@
-import { ClassName } from "@fleetwood/types/ClassName";
-import { ChildContent } from "@fleetwood/types/ReactChildren";
+import { ClassName } from "@/types/ClassName";
+import { ChildContent } from "@/types/ReactChildren";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
 type HeroProps = ChildContent &
   ClassName & {
     title: string;
+    h2?: boolean
+    h3?: boolean
   };
 
 const Hero = (props: HeroProps) => {
@@ -19,7 +21,10 @@ const Hero = (props: HeroProps) => {
         props.className
       )}
     >
-      <h1 className="text-center mt-0">{props.title}</h1>
+      {props.h2 ? <h2 className="text-center mt-0">{props.title}</h2>
+      :props.h3 ? <h3 className="text-center mt-0">{props.title}</h3>
+      : <h1 className="text-center mt-0">{props.title}</h1>
+      }
       <div className="divider divider-primary-content"></div>
       {props.children}
     </div>

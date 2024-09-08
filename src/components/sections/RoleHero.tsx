@@ -1,7 +1,7 @@
 'use client'
-import { addArticle } from "@fleetwood/lib/linguistics";
-import { ClassName } from "@fleetwood/types/ClassName";
-import { RoleProp } from "@fleetwood/types/RoleProp";
+import { addArticle } from "@/lib/linguistics";
+import { ClassName } from "@/types/ClassName";
+import { RoleProp } from "@/types/RoleProp";
 import Image from "next/image"; // Import the Image component
 import { useEffect, useState } from "react";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
