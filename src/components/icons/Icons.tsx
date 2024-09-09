@@ -1,6 +1,6 @@
-import { ClassName } from "@fleetwood/types/ClassName";
-import { IconProps } from "@fleetwood/types/props/IconProps";
-import { ChildContent } from "@fleetwood/types/ReactChildren";
+import { ClassName } from "@/types/ClassName";
+import { IconProps } from "@/types/props/IconProps";
+import { ChildContent } from "@/types/ReactChildren";
 import { SVGAttributes } from "react";
 import {
   LuExpand,

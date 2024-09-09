@@ -1,4 +1,4 @@
-import { ChildContent } from '@fleetwood/types/ReactChildren';
+import { ChildContent } from '@/types/ReactChildren';
 import React from 'react';
 import { remark } from 'remark';
 import html from 'remark-html';

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { IconLightbulb } from '@fleetwood/components/icons/Icons'
 import { ClassName } from '@fleetwood/types/ClassName'
 import { ChildContent, ReactNodeContent } from '@fleetwood/types/ReactChildren'

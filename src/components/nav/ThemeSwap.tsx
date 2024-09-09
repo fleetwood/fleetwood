@@ -1,5 +1,5 @@
 'use client'
-import { useThemeStore } from '@fleetwood/store/useThemeStore';
+import { useThemeStore } from '@/store/useThemeStore';
 import { IconMoon, IconSun } from '../icons/Icons';
 
 const ThemeSwap = () => {

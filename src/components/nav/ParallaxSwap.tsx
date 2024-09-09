@@ -1,5 +1,5 @@
 'use client'
-import { usePlxStore } from "@fleetwood/store/usePlxStore";
+import { usePlxStore } from "@/store/usePlxStore";
 import { IconExpand, IconMonitorX } from "../icons/Icons";
 
 const ParallaxSwap = () => {

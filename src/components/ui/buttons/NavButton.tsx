@@ -1,5 +1,5 @@
-import { ClassName } from '@fleetwood/types/ClassName'
-import { ChildContent } from '@fleetwood/types/ReactChildren'
+import { ClassName } from '@/types/ClassName'
+import { ChildContent } from '@/types/ReactChildren'
 import Link from 'next/link'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
