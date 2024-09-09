@@ -42,11 +42,19 @@ const ContentSection = ({ children }: ChildContent) => {
   }, [children]);
 
   return (
-    <main className="flex-grow overflow-y-auto my-8" style={{ scrollbarWidth: 'none' }}>
-      <div ref={containerRef} className="container relative h-full overflow-y-auto" style={{ scrollbarWidth: 'none' }}>
-        <div className={twMerge(topScroll ? "h-4" : "h-0", "transition-all duration-200 ease-in-out sticky top-0 inset-x-0 bg-gradient-to-b from-primary to-transparent pointer-events-none z-10 overflow-hidden")}><LuChevronUpSquare className='mx-auto' /></div>
+    <main className="flex-grow overflow-y-auto my-8 overscroll-none" style={{ scrollbarWidth: 'none', overscrollBehavior: 'none' }}>
+      <div ref={containerRef} className="container relative h-full overflow-y-auto overscroll-none" style={{ scrollbarWidth: 'none', overscrollBehavior: 'none' }}>
+        <div className={twMerge(topScroll ? "h-6" : "h-0", "transition-all duration-200 ease-in-out sticky top-0 inset-x-0 pointer-events-none z-10 overflow-hidden")}>
+          <div className="w-fit mx-auto p-1 bg-primary text-primary-content rounded-b-md">
+            <LuChevronUpSquare />
+          </div>
+        </div>
         {children}
-        <div className={twMerge(bottomScroll ? "h-4" : "h-0", "transition-all duration-200 ease-in-out bottom-shadow sticky bottom-0 inset-x-0 bg-gradient-to-t from-primary to-transparent pointer-events-none z-10 overflow-hidden")}><LuChevronDownSquare className='mx-auto' /></div>
+        <div className={twMerge(bottomScroll ? "h-6" : "h-0", "transition-all duration-200 ease-in-out sticky bottom-0 inset-x-0 pointer-events-none z-10 overflow-hidden")}>
+          <div className="w-fit mx-auto p-1 bg-primary text-primary-content rounded-t-md">
+            <LuChevronDownSquare />
+          </div>
+        </div>
       </div>
     </main>
   );
