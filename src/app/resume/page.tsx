@@ -85,7 +85,7 @@ const lifeEvents: TimelineEvent[] = [
   { startDate: '1972-01-01', title: 'Born' },
   { startDate: '1990-06-01', title: 'Graduated High School' },
   { startDate: '2022-11-01', endDate: new Date().toString(), title: 'LG Electronics', icon: 'LGE.png', subTitle: "Senior Engineering Manager", summary: "Leading a team of engineers to develop the next generation of smart hospitality devices." },  
-  { startDate: '2023-08-01', endDate: '2022-09-01', title: 'Peloton', icon: 'peloton.png', subTitle: "Engineering Manager", summary: "Leading a team of engineers to develop the next generation of smart hospitality devices." },    
+  { startDate: '2019-08-01', endDate: '2022-09-01', title: 'Peloton', icon: 'peloton.png', subTitle: "Engineering Manager", summary: "Leading a team of engineers to develop the next generation of smart hospitality devices." },    
   // Add more life events here
 ];
 
