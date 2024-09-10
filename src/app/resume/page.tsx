@@ -1,5 +1,6 @@
 import Hero from "@/components/sections/Hero";
-import TimelineComponent from "@/components/sections/timeline/TimelineComponent";
+import Quote from "@/components/sections/Quote";
+import Timeline, { TimelineEvent } from "@/components/sections/timeline/Timeline";
 import { db } from "@/db/index";
 import { roles } from "@/db/schema/roles";
 import { Role } from "@/types/Role";
@@ -80,14 +81,27 @@ export default async function ResumePage() {
     },
   ];
 
+const lifeEvents: TimelineEvent[] = [
+  { startDate: '1972-01-01', title: 'Born' },
+  { startDate: '1990-06-01', title: 'Graduated High School' },
+  { startDate: '2022-11-01', endDate: new Date().toString(), title: 'LG Electronics', icon: 'LGE.png', subTitle: "Senior Engineering Manager", summary: "Leading a team of engineers to develop the next generation of smart hospitality devices." },  
+  { startDate: '2023-08-01', endDate: '2022-09-01', title: 'Peloton', icon: 'peloton.png', subTitle: "Engineering Manager", summary: "Leading a team of engineers to develop the next generation of smart hospitality devices." },    
+  // Add more life events here
+];
+
+const worldEvents: TimelineEvent[] = [
+  { startDate: '2020-03-01', title: 'covid-19 pandemic' },
+  { startDate: '2023-02-01', title: 'Tom Brady actually retires' },
+  { startDate: '2022-04-08', title: 'Will Smith banned from Oscars until 2032' },
+  { startDate: '2022-06-09', title: 'Putin thinks he\'s Peter the Great' },
+  // Add more world events here
+];
+
   return (
     <Hero title="History" h2>
-      <div className="bg-black/50 text-white p-4 my-10 text-lg font-serif rounded-lg text-center">
-        <div className="italic">Oh, the places I&apos;ve been!</div>
-        <div>- Dr. Suess (kinda)</div>
-      </div>
-
-      <TimelineComponent roles={history} />
+      <Quote author="Dr. Suess (kinda)">Oh, the places I&apos;ve been!</Quote>
+      {/* <TimelineComponent roles={history} /> */}
+      <Timeline lifeEvents={lifeEvents} worldEvents={worldEvents} />
     </Hero>
   );
 }
