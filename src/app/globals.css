@@ -75,5 +75,9 @@ h4 {
   .spacing-normal {
     letter-spacing: 0;
   }
-
+  
+  .timeline {
+    width: 100%; /* or a specific width if required */
+    @apply overflow-y-clip
+  }
 }

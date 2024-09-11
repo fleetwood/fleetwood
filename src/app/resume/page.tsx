@@ -82,11 +82,19 @@ export default async function ResumePage() {
   ];
 
 const lifeEvents: TimelineEvent[] = [
-  { startDate: '1972-01-01', title: 'Born' },
+  { startDate: '1972-05-26', title: 'I am here!' },
   { startDate: '1990-06-01', title: 'Graduated High School' },
-  { startDate: '2022-11-01', endDate: new Date().toString(), title: 'LG Electronics', icon: 'LGE.png', subTitle: "Senior Engineering Manager", summary: "Leading a team of engineers to develop the next generation of smart hospitality devices." },  
-  { startDate: '2019-08-01', endDate: '2022-09-01', title: 'Peloton', icon: 'peloton.png', subTitle: "Engineering Manager", summary: "Leading a team of engineers to develop the next generation of smart hospitality devices." },    
-  // Add more life events here
+  ...history.map((role) => {
+    return {
+      startDate: role.startDate.toString(),
+      endDate: (role.endDate??new Date()).toString(),
+      title: role.title,
+      subTitle: role.name,
+      summary: role.summary,
+      icon: role.icon ?? undefined,
+    };
+  })
+
 ];
 
 const worldEvents: TimelineEvent[] = [
@@ -94,13 +102,11 @@ const worldEvents: TimelineEvent[] = [
   { startDate: '2023-02-01', title: 'Tom Brady actually retires' },
   { startDate: '2022-04-08', title: 'Will Smith banned from Oscars until 2032' },
   { startDate: '2022-06-09', title: 'Putin thinks he\'s Peter the Great' },
-  // Add more world events here
 ];
 
   return (
     <Hero title="History" h2>
       <Quote author="Dr. Suess (kinda)">Oh, the places I&apos;ve been!</Quote>
-      {/* <TimelineComponent roles={history} /> */}
       <Timeline lifeEvents={lifeEvents} worldEvents={worldEvents} />
     </Hero>
   );
