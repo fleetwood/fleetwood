@@ -1,195 +1,89 @@
-import chalk from "chalk";
-import { addMonths, format, getMonth, isAfter, isEqual, isSameMonth } from "date-fns";
-import Image from "next/image";
+import dayjs, { Dayjs } from "dayjs";
+import TimelineItem from "./TimelineItem";
 
 export type TimelineEvent = {
-  startDate: string;
-  endDate?: string;
-  title: string;
-  subTitle?: string;
-  summary?: string;
-  icon?: string;
+  startDate : string;
+  endDate  ?: string;
+  title     : string;
+  subTitle ?: string;
+  summary  ?: string;
+  icon     ?: string;
+  width     : number
 };
 
-export type TimelineItem = TimelineEvent & {
-  startPosition: number;
-  endPosition?: number | undefined;
+export type TimelineItemProps = {
+  date       : Dayjs,
+  lifeEvent ?: TimelineEvent
+  worldEvent?: TimelineEvent
+  width      : number
 };
 
-export type TimelineDate = {
-  startDate: Date;
-  endDate?: Date;
-  lifeEvent?: TimelineItem;
-  worldEvent?: TimelineItem;
-};
-
-function getTotalMonths(s: Date | string, e: Date | string): number;
-function getTotalMonths(event: TimelineEvent): number;
-function getTotalMonths(
-  s: Date | string | TimelineEvent,
-  e?: Date | string
-): number {
-  let start: Date;
-  let end: Date;
-
-  if (typeof s === "object" && "startDate" in s) {
-    start = new Date(s.startDate);
-    end = s.endDate ? new Date(s.endDate) : new Date();
-  } else {
-    start ??= new Date(s);
-    end ??= new Date(e!);
-  }
-
-  return (
-    (end.getFullYear() - start.getFullYear()) * 12 +
-    (end.getMonth() - start.getMonth()) +
-    (end.getDate() >= start.getDate() ? 1 : 0)
-  );
-}
+const PIXELS_PER_MONTH = 50;
+const START_DATE = dayjs("1972-01-01");
+const END_DATE = dayjs();
 
 const timeline = {
-  startDate: new Date(1972, 1, 1),
-  endDate: new Date(),
-  totalMonths: getTotalMonths(new Date(1972, 1, 1), new Date()),
-};
+  startDate: START_DATE,
+  endDate: END_DATE,
+  totalMonths: END_DATE.diff(START_DATE, "months")
+}
+
+const matchYearMonth = (date: Dayjs, match: Dayjs) => {
+  return date.year() === match.year() && date.month() === match.month() 
+}
 
 type TimelineProps = {
   lifeEvents: TimelineEvent[];
   worldEvents: TimelineEvent[];
 };
 
-const Timeline = ({ lifeEvents, worldEvents }: TimelineProps) => {
-  const generateTimelineData = (): TimelineDate[] => {
-    const months: TimelineDate[] = [];
-    let start = timeline.startDate;
-    let current = timeline.endDate;
+const Timeline = ({ lifeEvents, worldEvents }: TimelineProps) => {const totalMonths = timeline.totalMonths;
+  const timelineWidth = totalMonths * PIXELS_PER_MONTH;
 
-    const getTimelineItem = (evt?: TimelineEvent) => {
-      if (!evt) return undefined;
-      const dateStart = getTotalMonths(
-        timeline.startDate,
-        new Date(evt.endDate ?? evt.startDate)
-      );
-      const dateEnd = getTotalMonths(
-        timeline.startDate,
-        new Date(evt.startDate)
-      );
-      const startPosition = 100 - (dateStart / timeline.totalMonths) * 100;
-      const endPosition = dateEnd !== dateStart ? 100 - (dateEnd / timeline.totalMonths) * 100 : undefined;
-      // console.log("getTimelineItem()", {
-      //   title: evt.title,
-      //   dateStart: {
-      //     dateStart,
-      //     startPosition,
-      //     totalMonths: timeline.totalMonths,
-      //   },
-      //   dateEnd: {
-      //     dateEnd,
-      //     endPosition,
-      //     totalMonths: timeline.totalMonths,
-      //   },
-      // });
-      return {
-        ...evt,
-        startPosition,
-        endPosition,
-      };
-    };
-
-    while (isAfter(current, addMonths(start, -1))) {
-      const lifeEvent = lifeEvents.find((d) =>
-        isSameMonth(new Date(d.startDate), current)
-      );
-      const worldEvent = worldEvents.find((d) =>
-        isSameMonth(new Date(d.startDate), current)
-      );
-
-      months.push({
-        startDate: current,
-        lifeEvent: getTimelineItem(lifeEvent),
-        worldEvent: getTimelineItem(worldEvent),
-      });
-
-      current = addMonths(current, -1);
-    }
-    return months;
+  const calculateWidthInPixels = (startDate: string, endDate?: string) => {
+    const start = dayjs(startDate);
+    const end = endDate ? dayjs(endDate) : start.add(1, 'month');
+    const durationInMonths = end.diff(start, 'month');
+    return Math.max(durationInMonths * PIXELS_PER_MONTH, PIXELS_PER_MONTH); // Ensure minimum width of one month
   };
 
-  const timelineData = generateTimelineData();
+  const lifeItems:TimelineEvent[] = lifeEvents.map((e) => {
+    const startDate = dayjs(e.startDate)
+    const endDate   = e.endDate ? dayjs(e.endDate) : startDate.add(6, "month")
+    return {
+      ...e,
+      width: calculateWidthInPixels(e.startDate, e.endDate),
+    } as TimelineEvent
+  });
+  
+  const worldItems = worldEvents.map((e) => {
+    return {
+      ...e,
+      width: PIXELS_PER_MONTH * 6,
+  }})
 
+  const getTimelineItems = (): TimelineItemProps[] => {
+    const timelineItems: TimelineItemProps[] = [];
+    let date = timeline.startDate;
+    while (date.isBefore(timeline.endDate)) {
+      timelineItems.push({
+        date,
+        width: PIXELS_PER_MONTH,
+        lifeEvent: lifeItems.find((e) => matchYearMonth(dayjs(e.endDate ?? e.startDate), date)),
+        worldEvent: worldItems.find((e) => matchYearMonth(dayjs(e.startDate), date))
+      })
+      date = date.add(1, "month");
+    }
+    return timelineItems.reverse()
+  }
+
+  const timelineData: TimelineItemProps[] = getTimelineItems();
+  
   return (
-    <div className="timeline timeline-container overflow-x-auto border border-error">
-      <div className="timeline relative flex flex-col gap-1 min-w-fit border border-primary"> 
-        <div className="timeline life-timeline relative life-timeline h-16">
-          {timelineData
-            .filter((e) => e.lifeEvent !== undefined)
-            .map(({ lifeEvent }) => (
-              <div
-                key={lifeEvent!.startDate}
-                className="
-                    absolute top-0 p-2 rounded-md min-w-fit
-                    flex flex-nowrap gap-2 items-center
-                    text-pretty line-clamp-1 
-                    bg-secondary text-secondary-content 
-                    shadow-md shadow-secondary-content
-                  "
-                style={{
-                  left: `${lifeEvent!.startPosition}%`,
-                  width: `${lifeEvent!.endPosition}%`,
-                }}
-              >
-                {lifeEvent?.icon && (
-                  <Image
-                    height={40}
-                    width={40}
-                    alt={lifeEvent.title}
-                    src={`/img/${lifeEvent.icon}`}
-                  />
-                )}
-                <h4 className="">{lifeEvent!.title}</h4>
-                <div className="flex gap-2 min-w-fit font-semibold">
-                  {lifeEvent!.endDate &&
-                    format(new Date(lifeEvent!.endDate), "MMM yyyy - ")}
-                  {format(new Date(lifeEvent!.startDate), "MMM yyyy")}
-                </div>
-              </div>
-            ))}
-        </div>
-
-        <div className="timeline calendar-timeline relative calendar-timeline flex items-center text-base-content/50">
-          {timelineData.map((month) =>
-            getMonth(month.startDate) === 0 ? (
-              <div
-                key={month.startDate.toDateString()}
-                className="min-w-fit px-2 bg-accent text-accent-content rounded-md"
-              >
-                {format(month.startDate, "yyyy")}
-              </div>
-            ) : (
-              <div
-                key={month.startDate.toDateString()}
-                className="min-w-fit px-1 text-xs"
-              >
-                {format(month.startDate, "MMM").substring(0, 1)}
-              </div>
-            )
-          )}
-        </div>
-
-        <div className="timeline event-timeline relative event-timeline h-16">
-          {timelineData
-            .filter((e) => e.worldEvent !== undefined)
-            .map(({ worldEvent }) => (
-              <div
-                key={worldEvent!.startDate}
-                className="absolute top-0 p-2 text-sm rounded-md bg-base-200 text-base-content shadow shadow-base-content"
-                style={{
-                  left: `${worldEvent!.startPosition}%`,
-                }}
-              >
-                <div>{worldEvent!.title}</div>
-              </div>
-            ))}
+    <div className="w-full overflow-y-clip overflow-x-auto">
+      <div className="flex flex-col gap-1"> 
+        <div className={`calendar-item flex items-center text-base-content/50 w-[${timelineWidth}px]`}>
+          {timelineData.map((item) => <TimelineItem key={item.date.toISOString()} {...item} />)}
         </div>
       </div>
     </div>

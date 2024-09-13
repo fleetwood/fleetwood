@@ -1,33 +1,21 @@
-import React from "react";
-import { format } from 'date-fns'
-import { Role } from "@/types/Role";
-import Image from "next/image";
-import { LuBuilding } from "react-icons/lu";
+import dayjs from "dayjs";
+import LifeEvent from "./LifeEvent";
+import type { TimelineItemProps } from "./Timeline";
+import WorldEvent from "./WorldEvent";
 
-const TimelineItem = ({role}:{role:Role}) => {
+const TimelineItem = ({lifeEvent, worldEvent, date, width}:TimelineItemProps) => {
+  const isYear = dayjs(date).month() === 0
   return (
-    <div key={role.id} className="timeline-item">
-      <div className="timeline-middle">
-        {role.icon ? (
-          <Image
-            src={`/img/${role.icon}`}
-            alt={role.name}
-            width={40}
-            height={40}
-            className="rounded-full" />
-        ) : (
-          <LuBuilding />
-        )}
-      </div>
-      <div className={`md:text-end mb-10 timeline-box`}>
-        <time className="font-mono italic">
-          {format(role.startDate, "MMM yyyy")} -{" "}
-          {role.endDate ? format(role.endDate, "MMM yyyy") : "Present"}
-        </time>
-        <div className="text-lg font-black">{role.title}</div>
-        {role.name}
-      </div>
-      <hr />
+    <div 
+      key={date.toISOString()} 
+      className="relative h-56 py-28 text-sm flex flex-col items-center justify-center"
+      style={{minWidth: `${width}px`, maxWidth: `${width}px`}}
+    >
+      {lifeEvent && <LifeEvent item={lifeEvent} />}
+      {isYear 
+        ? <span className="bg-base-200 text-base-content rounded-full px-2">{dayjs(date).year()}</span>
+        : <span className="w-full text-center">{dayjs(date).format("MMM").substring(0,1)}</span>}
+      {worldEvent && <WorldEvent item={worldEvent} />}
     </div>
   );
 };

@@ -101,7 +101,6 @@ const worldEvents: TimelineEvent[] = [
   { startDate: '2020-03-01', title: 'covid-19 pandemic' },
   { startDate: '2023-02-01', title: 'Tom Brady actually retires' },
   { startDate: '2022-04-08', title: 'Will Smith banned from Oscars until 2032' },
-  { startDate: '2022-06-09', title: 'Putin thinks he\'s Peter the Great' },
 ];
 
   return (

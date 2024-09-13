@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useRef, useEffect, useState } from 'react'
-import TimelineItem from './TimelineItem'
+import TimelineItemProps from './TimelineItem'
 
 type Role = {
   id: string
