@@ -1,4 +1,4 @@
-import { TimelineEvent } from "./Timeline";
+import { TimelineEvent } from "@/types/props/timeline/TimelineProps";
 
 const WorldEvent = ({item}:{item:TimelineEvent}) => {
   return (

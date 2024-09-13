@@ -40,7 +40,12 @@ const roles:RoleProp[] = [
 ];
 
 export default function Home() {
+  console.log('Roles data:', roles); // Add this line for debugging
+
   return (
-    <RoleHero items={roles} />
+    <>
+      <div>Number of roles: {roles.length}</div> {/* Add this line */}
+      <RoleHero items={roles} />
+    </>
   );
 }

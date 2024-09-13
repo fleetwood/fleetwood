@@ -1,32 +1,6 @@
 import dayjs, { Dayjs } from "dayjs";
 import TimelineItem from "./TimelineItem";
-
-export type TimelineEvent = {
-  startDate : string;
-  endDate  ?: string;
-  title     : string;
-  subTitle ?: string;
-  summary  ?: string;
-  icon     ?: string;
-  width     : number
-};
-
-export type TimelineItemProps = {
-  date       : Dayjs,
-  lifeEvent ?: TimelineEvent
-  worldEvent?: TimelineEvent
-  width      : number
-};
-
-const PIXELS_PER_MONTH = 50;
-const START_DATE = dayjs("1972-01-01");
-const END_DATE = dayjs();
-
-const timeline = {
-  startDate: START_DATE,
-  endDate: END_DATE,
-  totalMonths: END_DATE.diff(START_DATE, "months")
-}
+import { timelineConfig, TimelineEvent, TimelineItemProps } from "@/types/props/timeline/TimelineProps";
 
 const matchYearMonth = (date: Dayjs, match: Dayjs) => {
   return date.year() === match.year() && date.month() === match.month() 
@@ -37,38 +11,49 @@ type TimelineProps = {
   worldEvents: TimelineEvent[];
 };
 
-const Timeline = ({ lifeEvents, worldEvents }: TimelineProps) => {const totalMonths = timeline.totalMonths;
-  const timelineWidth = totalMonths * PIXELS_PER_MONTH;
+const Timeline = ({ lifeEvents, worldEvents }: TimelineProps) => {
+  const totalMonths = timelineConfig.totalMonths
+  const monthWidth = timelineConfig.width.month;
 
-  const calculateWidthInPixels = (startDate: string, endDate?: string) => {
-    const start = dayjs(startDate);
-    const end = endDate ? dayjs(endDate) : start.add(1, 'month');
-    const durationInMonths = end.diff(start, 'month');
-    return Math.max(durationInMonths * PIXELS_PER_MONTH, PIXELS_PER_MONTH); // Ensure minimum width of one month
+  const getDuration = (startDate: Dayjs, endDate?: Dayjs) => {
+    if (!endDate) return 1;
+    const start = dayjs(startDate).startOf('month');
+    const end = dayjs(endDate).startOf('month');
+    const years = end.year() - start.year();
+    const months = end.month() - start.month();
+    const durationInMonths = (years * 12) + months;
+    console.log('getDuration()', start.format('YYYY MMM'), end.format('YYYY MMM'), durationInMonths);
+    return durationInMonths;
+  }
+  
+  const getWidth = (durationInMonths: number) => {
+    return Math.max(Math.ceil(durationInMonths * monthWidth), monthWidth)
   };
 
   const lifeItems:TimelineEvent[] = lifeEvents.map((e) => {
     const startDate = dayjs(e.startDate)
     const endDate   = e.endDate ? dayjs(e.endDate) : startDate.add(6, "month")
+    const duration = getDuration(startDate, endDate)
+    const width = getWidth(duration)
     return {
       ...e,
-      width: calculateWidthInPixels(e.startDate, e.endDate),
+      width,
+      duration
     } as TimelineEvent
   });
   
   const worldItems = worldEvents.map((e) => {
     return {
       ...e,
-      width: PIXELS_PER_MONTH * 6,
+      width: monthWidth * 6,
   }})
 
   const getTimelineItems = (): TimelineItemProps[] => {
     const timelineItems: TimelineItemProps[] = [];
-    let date = timeline.startDate;
-    while (date.isBefore(timeline.endDate)) {
+    let date = timelineConfig.startDate;
+    while (date.isBefore(timelineConfig.endDate)) {
       timelineItems.push({
         date,
-        width: PIXELS_PER_MONTH,
         lifeEvent: lifeItems.find((e) => matchYearMonth(dayjs(e.endDate ?? e.startDate), date)),
         worldEvent: worldItems.find((e) => matchYearMonth(dayjs(e.startDate), date))
       })
@@ -82,7 +67,7 @@ const Timeline = ({ lifeEvents, worldEvents }: TimelineProps) => {const totalMon
   return (
     <div className="w-full overflow-y-clip overflow-x-auto">
       <div className="flex flex-col gap-1"> 
-        <div className={`calendar-item flex items-center text-base-content/50 w-[${timelineWidth}px]`}>
+        <div className={`calendar-item flex items-center text-base-content/50 w-[${monthWidth}px]`}>
           {timelineData.map((item) => <TimelineItem key={item.date.toISOString()} {...item} />)}
         </div>
       </div>

@@ -1,9 +1,9 @@
 import dayjs from "dayjs";
-import { TimelineEvent } from "./Timeline";
+import { TimelineEvent } from "@/types/props/timeline/TimelineProps";
 
 const LifeEvent = ({item}:{item:TimelineEvent}) => {
   return (
-    <div className={`absolute top-0 left-0 group`} style={{width: item.width-10}}>
+    <div className={`absolute top-0 left-0 group`} style={{width: item.width}}>
       <div className="
         h-full min-w-full relative p-2
         rounded-md bg-secondary text-secondary-content 
@@ -18,6 +18,7 @@ const LifeEvent = ({item}:{item:TimelineEvent}) => {
           <div className="flex text-xs whitespace-nowrap">
             {item.endDate && <span>{dayjs(item!.endDate).format("YYYY MMM - ")}</span>}
             <span>{dayjs(item!.startDate).format("YYYY MMM")}</span>
+            <span>{item.duration}mo</span>
           </div>
           {/* <div className="font-semibold whitespace-nowrap">{item.title}</div> */}
         </div>

@@ -53,6 +53,7 @@ const RoleHero = ({className, items}: HeroProps) => {
         <div className="flex-grow min-w-1/2 px-10">
           <h3 className="text-center mt-4">I&apos;m Fleetwood</h3>
           <div className="divider divider-primary-content"></div>
+          <div>Number of roles: {roles.length}</div>
           <div className="flex flex-grow h-full w-full justify-stretch">
             <div className="flex flex-col overflow-hidden">
               <div className="w-full h-8">
