@@ -12,34 +12,32 @@ type TimelineProps = {
 };
 
 const Timeline = ({ lifeEvents, worldEvents }: TimelineProps) => {
-  const totalMonths = timelineConfig.totalMonths
   const monthWidth = timelineConfig.width.month;
+  const yearWidth = timelineConfig.width.year;
 
   const getDuration = (startDate: Dayjs, endDate?: Dayjs) => {
-    if (!endDate) return 1;
+    if (!endDate) return { months: 1, yearsPassed: 0 };
     const start = dayjs(startDate).startOf('month');
-    const end = dayjs(endDate).startOf('month');
-    const years = end.year() - start.year();
-    const months = end.month() - start.month();
-    const durationInMonths = (years * 12) + months;
-    console.log('getDuration()', start.format('YYYY MMM'), end.format('YYYY MMM'), durationInMonths);
-    return durationInMonths;
+    const end = dayjs(endDate).endOf('month');
+    const yearsPassed = end.year() - start.year();
+    const months = end.diff(start, 'month')-yearsPassed;
+    return { months, yearsPassed };
   }
   
-  const getWidth = (durationInMonths: number) => {
-    return Math.max(Math.ceil(durationInMonths * monthWidth), monthWidth)
+  const getWidth = (duration: { months: number, yearsPassed: number }) => {
+    return (duration.months * monthWidth) + (duration.yearsPassed * yearWidth);
   };
 
-  const lifeItems:TimelineEvent[] = lifeEvents.map((e) => {
-    const startDate = dayjs(e.startDate)
-    const endDate   = e.endDate ? dayjs(e.endDate) : startDate.add(6, "month")
-    const duration = getDuration(startDate, endDate)
-    const width = getWidth(duration)
+  const lifeItems: TimelineEvent[] = lifeEvents.map((e) => {
+    const startDate = dayjs(e.startDate);
+    const endDate = e.endDate ? dayjs(e.endDate) : startDate.add(6, "month");
+    const duration = getDuration(startDate, endDate);
+    const width = getWidth(duration);
     return {
       ...e,
       width,
-      duration
-    } as TimelineEvent
+      duration: duration.months
+    } as TimelineEvent;
   });
   
   const worldItems = worldEvents.map((e) => {

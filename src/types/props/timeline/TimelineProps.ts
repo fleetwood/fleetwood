@@ -17,8 +17,8 @@ export type TimelineItemProps = {
   worldEvent?: TimelineEvent
 };
 
-const PIXELS_PER_MONTH = 50;
-const PIXELS_PER_YEAR = 50;
+const PIXELS_PER_MONTH = 20;
+const PIXELS_PER_YEAR = 50; // Increased to make year labels more prominent
 const START_DATE = dayjs("1972-01-01");
 const END_DATE = dayjs();
 
