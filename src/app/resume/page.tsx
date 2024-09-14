@@ -83,7 +83,22 @@ export default async function ResumePage() {
 
 const lifeEvents: TimelineEvent[] = [
   { startDate: '1972-05-26', title: 'I am here!' },
-  { startDate: '1990-06-01', title: 'Graduated High School' },
+  { startDate: '1975-10-01', subTitle: 'Started reading' },
+  { startDate: '1977-08-01', subTitle: 'Started school' },
+  { startDate: '1981-03-01', subTitle: 'Discovered art' },
+  { startDate: '1984-08-01', subTitle: 'First guitar', title: '1984 Kramer' },
+  { startDate: '1985-06-01', subTitle: 'First girlfriend' },
+  { startDate: '1985-12-25', subTitle: 'First computer', title: 'Commodore 128' },
+  { startDate: '1986-06-01', subTitle: 'First job', title: 'McDonalds' },
+  { startDate: '1988-05-26', subTitle: 'First car!', title: 'Plymouth Duster' },
+  { startDate: '1988-12-26', subTitle: 'Second car', title: 'Pontiac TransAm' },
+  { startDate: '1989-12-01', title: 'Graduated High School' },
+  { startDate: '1994-05-01', title: 'Met my wife' },
+  { startDate: '1999-05-09', title: 'I am Dad' },
+  { startDate: '2001-08-11', title: 'I am Husband' },
+  { startDate: '2002-02-26', title: 'I am 2xDad' },
+  { startDate: '2016-03-01', title: 'First Tattoo' },
+  { startDate: '2021-08-11', title: 'First Jaguar' },
   ...history.map((role) => {
     return {
       startDate: role.startDate.toString(),
@@ -98,7 +113,24 @@ const lifeEvents: TimelineEvent[] = [
 ];
 
 const worldEvents: TimelineEvent[] = [
-  { startDate: '2020-03-01', title: 'covid-19 pandemic' },
+  { startDate: '1973-03-01', title: 'Dark Side of the Moon - Pink Floyd' },
+  { startDate: '1975-04-01', title: 'Monty Python and the Holy Grail' },
+  { startDate: '1977-05-27', title: 'Star Wars' },
+  { startDate: '1984-01-01', title: '1984 - Van Halen, Heartbeat City - The Cars' },
+  { startDate: '1984-06-01', title: 'Born in the USA - Bruce Springsteen. Purple Rain - Prince' },
+  { startDate: '1984-11-01', title: 'Ride the Lightning - Metallica, Like a Virgin - Madonna' },
+  { startDate: '1989-06-01', title: `The Shot. also, You've got mail!` },
+  { startDate: '1985-09-01', title: 'Superbowl Shuffle' },
+  { startDate: '1993-07-27', title: 'Siamese Dream - Smashing Pumpkins' },
+  { startDate: '1992-04-06', title: 'Windows 3.1, Starbucks (f. 1971)' },
+  { startDate: '1995-08-04', title: 'Windows 95, AltaVista, Amazon' },
+  { startDate: '1998-09-04', title: 'Google' },
+  { startDate: '2001-09-11', title: 'Who is Osama Bin Laden?' },
+  { startDate: '2001-12-01', title: 'Lord of the Rings' },
+  { startDate: '2007-02-04', title: 'Indy kicks to Hester' },
+  { startDate: '2010-01-05', title: 'Citizens United passes' },
+  { startDate: '2011-10-05', title: 'Stay hungry, stay foolish' },
+  { startDate: '2019-03-01', endDate: '2020-08-01', title: 'covid-19' },
   { startDate: '2023-02-01', title: 'Tom Brady actually retires' },
   { startDate: '2022-04-08', title: 'Will Smith banned from Oscars until 2032' },
 ];
