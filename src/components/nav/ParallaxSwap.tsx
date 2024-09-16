@@ -21,8 +21,8 @@ const ParallaxSwap = () => {
           checked={active}
           onChange={() => {}}
           />
-        <IconExpand className="swap-on h-6 w-6 scale-75 group-hover:scale-100" onClick={() => toggle} /> 
-        <IconMonitorX className="swap-off h-6 w-6 scale-75 group-hover:scale-100" onClick={() => toggle} />
+        <IconExpand className="swap-on h-6 w-6 scale-75 group-hover:scale-100" onClick={() => toggle()} /> 
+        <IconMonitorX className="swap-off h-6 w-6 scale-75 group-hover:scale-100" onClick={() => toggle()} />
       </label>
     </div>
   );
