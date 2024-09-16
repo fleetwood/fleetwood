@@ -33,6 +33,7 @@ const Timeline = ({ lifeEvents, worldEvents }: TimelineProps) => {
     const endDate = e.endDate ? dayjs(e.endDate) : startDate.add(6, "month");
     const duration = getDuration(startDate, endDate);
     const width = getWidth(duration);
+
     return {
       ...e,
       width,
@@ -40,11 +41,7 @@ const Timeline = ({ lifeEvents, worldEvents }: TimelineProps) => {
     } as TimelineEvent;
   });
   
-  const worldItems = worldEvents.map((e) => {
-    return {
-      ...e,
-      width: monthWidth * 6,
-  }})
+  const worldItems = worldEvents.map((e) => { return {...e,width: monthWidth * 6,}})
 
   const getTimelineItems = (): TimelineItemProps[] => {
     const timelineItems: TimelineItemProps[] = [];

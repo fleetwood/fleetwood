@@ -7,8 +7,8 @@ export type TimelineEvent = {
   subTitle ?: string;
   summary  ?: string;
   icon     ?: string;
-  width     : number
-  duration  : number
+  width     ?: number
+  duration  ?: number
 };
 
 export type TimelineItemProps = {

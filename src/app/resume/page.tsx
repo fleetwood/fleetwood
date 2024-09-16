@@ -1,8 +1,10 @@
-import Hero from "@/components/sections/Hero";
+import Hero from "@/components/sections/hero/Hero";
+import HeroDrawer from "@/components/sections/hero/HeroDrawer";
 import Quote from "@/components/sections/Quote";
-import Timeline, { TimelineEvent } from "@/components/sections/timeline/Timeline";
+import Timeline from "@/components/sections/timeline/Timeline";
 import { db } from "@/db/index";
 import { roles } from "@/db/schema/roles";
+import { TimelineEvent } from "@/types/props/timeline/TimelineProps";
 import { Role } from "@/types/Role";
 import { desc } from "drizzle-orm";
 
@@ -81,17 +83,17 @@ export default async function ResumePage() {
     },
   ];
 
-const lifeEvents: TimelineEvent[] = [
+const lifeEvents:TimelineEvent[] = [
   { startDate: '1972-05-26', title: 'I am here!' },
-  { startDate: '1975-10-01', subTitle: 'Started reading' },
-  { startDate: '1977-08-01', subTitle: 'Started school' },
-  { startDate: '1981-03-01', subTitle: 'Discovered art' },
-  { startDate: '1984-08-01', subTitle: 'First guitar', title: '1984 Kramer' },
-  { startDate: '1985-06-01', subTitle: 'First girlfriend' },
-  { startDate: '1985-12-25', subTitle: 'First computer', title: 'Commodore 128' },
-  { startDate: '1986-06-01', subTitle: 'First job', title: 'McDonalds' },
-  { startDate: '1988-05-26', subTitle: 'First car!', title: 'Plymouth Duster' },
-  { startDate: '1988-12-26', subTitle: 'Second car', title: 'Pontiac TransAm' },
+  { startDate: '1975-10-01', title: 'Started reading' },
+  { startDate: '1977-08-01', title: 'Started school' },
+  { startDate: '1981-03-01', title: 'Discovered art' },
+  { startDate: '1984-08-01', title: 'First guitar', subTitle: '1984 Kramer' },
+  { startDate: '1985-06-01', title: 'First girlfriend' },
+  { startDate: '1985-12-25', title: 'First computer', subTitle: 'Commodore 128' },
+  { startDate: '1986-06-01', title: 'First job', subTitle: 'McDonalds' },
+  { startDate: '1988-05-26', title: 'First car!', subTitle: 'Plymouth Duster' },
+  { startDate: '1988-12-26', title: 'Second car', subTitle: 'Pontiac TransAm' },
   { startDate: '1989-12-01', title: 'Graduated High School' },
   { startDate: '1994-05-01', title: 'Met my wife' },
   { startDate: '1999-05-09', title: 'I am Dad' },
@@ -112,7 +114,7 @@ const lifeEvents: TimelineEvent[] = [
 
 ];
 
-const worldEvents: TimelineEvent[] = [
+const worldEvents = [
   { startDate: '1973-03-01', title: 'Dark Side of the Moon - Pink Floyd' },
   { startDate: '1975-04-01', title: 'Monty Python and the Holy Grail' },
   { startDate: '1977-05-27', title: 'Star Wars' },
@@ -139,6 +141,7 @@ const worldEvents: TimelineEvent[] = [
     <Hero title="History" h2>
       <Quote author="Dr. Suess (kinda)">Oh, the places I&apos;ve been!</Quote>
       <Timeline lifeEvents={lifeEvents} worldEvents={worldEvents} />
+      <HeroDrawer />
     </Hero>
   );
 }

@@ -11,7 +11,7 @@ const TimelineItem = ({lifeEvent, worldEvent, date}:TimelineItemProps) => {
     <div 
       key={date.toISOString()} 
       className="
-        relative h-56 py-28 text-sm 
+        relative h-72 py-28 text-sm 
         flex flex-col items-center justify-center
         "
       data-width={width}

@@ -33,8 +33,8 @@ const config: Config = {
       {
         light: {
           "base-100": colors.light.base.DEFAULT,
-          primary   : colors.light.primary.DEFAULT,
-          secondary : colors.light.secondary.DEFAULT,
+          primary   : colors.light.secondary.DEFAULT,
+          secondary : colors.light.primary.DEFAULT,
           accent    : colors.light.accent.DEFAULT,
           success   : colors.light.success.DEFAULT,
           error     : colors.light.error.DEFAULT,
