@@ -2,6 +2,7 @@
 import { useHeroDrawerStore } from '@/store/useHeroDrawerStore';
 import { ClassName } from '@/types/ClassName';
 import React, { useEffect, useRef } from 'react';
+import { LuX } from 'react-icons/lu';
 
 type HeroDrawerProps = ClassName;
 
@@ -37,11 +38,12 @@ const HeroDrawer = ({ className }: HeroDrawerProps) => {
         ref={drawerRef}
         className={`
           w-[calc(100%-4rem)] h-[calc(100%-4rem)]
-          bg-base-100 rounded p-4 
+          bg-primary dark:bg-secondary rounded-lg p-4 
           overflow-y-auto overflow-x-hidden
-        transition-all duration-300 ease-in-out
+          transition-all duration-300 ease-in-out
         ${isOpen ? 'scale-100' : 'scale-95'}
       `}>
+        <div className='flex justify-end w-full' onClick={() => setContent(null)}><div className="p-2 rounded-full bg-accent text-accent-content border border-accent-content"><LuX className='w-full h-full' /></div></div>
         {content}
       </div>
     </div>

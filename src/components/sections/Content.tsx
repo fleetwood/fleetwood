@@ -27,6 +27,24 @@ const ContentSection = ({ children }: ChildContent) => {
     setBottomScroll(scrollHeight > clientHeight && scrollY + clientHeight < scrollHeight);
   };
 
+  const pageUp = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        top: -containerRef.current.clientHeight,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const pageDown = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        top: containerRef.current.clientHeight,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   useEffect(() => {
     const container = containerRef.current;
     if (container) {
@@ -43,15 +61,23 @@ const ContentSection = ({ children }: ChildContent) => {
 
   return (
     <main className="flex-grow overflow-y-auto my-8 overscroll-none" style={{ scrollbarWidth: 'none', overscrollBehavior: 'none' }}>
-      <div ref={containerRef} className="container relative h-full overflow-y-auto overscroll-none" style={{ scrollbarWidth: 'none', overscrollBehavior: 'none' }}>
-        <div className={twMerge(topScroll ? "h-6" : "h-0", "transition-all duration-200 ease-in-out sticky top-0 inset-x-0 pointer-events-none z-10 overflow-hidden")}>
-          <div className="w-fit mx-auto p-1 bg-primary text-primary-content rounded-b-md">
+      <div ref={containerRef} className="relative h-full overflow-y-auto overscroll-none flex flex-col items-center" style={{ scrollbarWidth: 'none', overscrollBehavior: 'none' }}>
+        <div 
+          className={twMerge(topScroll ? "h-6" : "h-0", "transition-all duration-200 ease-in-out sticky top-0 inset-x-0 z-10 overflow-hidden w-full")}
+          onClick={pageUp}
+        >
+          <div className="w-fit mx-auto p-1 bg-primary text-primary-content opacity-50 hover:opacity-100 rounded-b-md cursor-pointer">
             <LuChevronUpSquare />
           </div>
         </div>
-        {children}
-        <div className={twMerge(bottomScroll ? "h-6" : "h-0", "transition-all duration-200 ease-in-out sticky bottom-0 inset-x-0 pointer-events-none z-10 overflow-hidden")}>
-          <div className="w-fit mx-auto p-1 bg-primary text-primary-content rounded-t-md">
+        <div className="w-full">
+          {children}
+        </div>
+        <div 
+          className={twMerge(bottomScroll ? "h-6" : "h-0", "transition-all duration-200 ease-in-out sticky bottom-0 inset-x-0 z-10 overflow-hidden w-full")}
+          onClick={pageDown}
+        >
+          <div className="w-fit mx-auto p-1 bg-primary text-primary-content opacity-50 hover:opacity-100 rounded-t-md cursor-pointer">
             <LuChevronDownSquare />
           </div>
         </div>

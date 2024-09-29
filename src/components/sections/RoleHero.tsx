@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { twMerge } from "tailwind-merge";
 import { Transition } from '@headlessui/react'
+import { ChildContent } from "@/types/ReactChildren";
 
 type HeroProps = ClassName & {
     items: RoleProp[]
@@ -40,7 +41,7 @@ const RoleHero = ({className, items}: HeroProps) => {
   return (
     <div
       className={twMerge(
-        "relative group w-full mt-10 mb-20 rounded-2xl",
+        "relative group w-full md:my-10 rounded-2xl",
         "text-base-content bg-glass",
         "border border-opacity-20 overflow-hidden",
         "border-b-base-100 border-r-base-100 ",
@@ -49,12 +50,26 @@ const RoleHero = ({className, items}: HeroProps) => {
       )}
     >
       {role &&
-      <div className="flex sticky top-0 justify-evenly w-full h-full">
+      <div className="flex flex-col md:flex-row sticky top-0 justify-evenly w-full h-full">
+        <div className="flex-shrink-0 h-[360px] w-full md:w-[360px] relative">
+          <Transition show={show} appear={true}
+            enterFrom= {twMerge('absolute left-1/2 -translate-x-1/2 md:left-auto md:-right-48 transition-all ease-out opacity-0')}
+            enter    = {twMerge('transition-all ease-out duration-500')}
+            leave    = {twMerge('transition-all ease-out duration-500')}
+            leaveTo  = {twMerge('absolute left-1/2 -translate-x-1/2 md:left-auto md:-right-48 transition-all ease-out opacity-0')} 
+            >
+            <Image 
+              className="absolute left-1/2 -translate-x-1/2 md:left-auto md:right-0 md:translate-x-0" 
+              src={role.img.src} 
+              alt={role.img.alt} 
+              width={role.img.width} 
+              height={role.img.height} 
+            />
+          </Transition>
+        </div>
         <div className="flex-grow min-w-1/2 px-10">
-          <h3 className="text-center mt-4">I&apos;m Fleetwood</h3>
-          <div className="divider divider-primary-content"></div>
-          <div>Number of roles: {roles.length}</div>
-          <div className="flex flex-grow h-full w-full justify-stretch">
+          <div className="hidden md:visible divider divider-primary-content"></div>
+          <div className="flex flex-grow h-full w-full justify-stretch py-2 md:py-0">
             <div className="flex flex-col overflow-hidden">
               <div className="w-full h-8">
                 <h4 className={twMerge("overflow-hidden whitespace-nowrap relative")}>
@@ -84,30 +99,39 @@ const RoleHero = ({className, items}: HeroProps) => {
             </div>
           </div>
         </div>
-        <div className="flex-shrink-0 h-[360px] w-[360px] relative">
-          <Transition show={show} appear={true}
-            enterFrom= {twMerge('absolute -right-48 transition-all ease-out opacity-0')}
-            enter    = {twMerge('transition-all ease-out duration-500')}
-            leave    = {twMerge('transition-all ease-out duration-500')}
-            leaveTo  = {twMerge('absolute -right-48 transition-all ease-out opacity-0')} 
-            >
-            <Image className="absolute right-0" src={role.img.src} alt={role.img.alt} width={role.img.width} height={role.img.height} />
-          </Transition>
-        </div>
+        
       </div>
       }
       <div className="join absolute w-full h-full top-0 left-1/2 -translate-x-1/2"> 
-        <div className="bg-base-100/20 transition-all duration-100 ease-linear pl-8 cursor-pointer -ml-8 hover:ml-0 hover:p-4 join-item opacity-50 hover:opacity-100 flex items-center" onClick={decrement}>
-          <LuChevronLeft className="w-8 h-8" />
-        </div>
-
+        <HeroNav onClick={decrement} />
         <div className="flex-grow"></div>
-        <div className="bg-base-100/20 transition-all duration-100 ease-linear pr-8 cursor-pointer -mr-8 hover:mr-0 hover:p-4 join-item opacity-50 hover:opacity-100 flex items-center" onClick={increment}>
-          <LuChevronRight className="w-8 h-8" />
-        </div>
+        <HeroNav onClick={increment} right />
       </div>
     </div>
   );
 };
 
+const HeroNav = ({onClick, right = false}: {onClick: () => void, right?: boolean}) => {
+  return (
+    <div className={twMerge(
+      "transition-all duration-100 ease-linear cursor-pointer",
+      "join-item flex items-center",
+      "bg-base-100/0 opacity-20",
+      "hover:ml-0 hover:p-4 hover:bg-base-100 hover:opacity-100",
+      right ? "-ml-4" : "-mr-4"
+      )} 
+      onClick={onClick}
+      >
+        {right ? 
+          <LuChevronRight className="w-8 h-8" />
+          :
+          <LuChevronLeft className="w-8 h-8" />
+        }
+    </div>
+)}
+
+
 export default RoleHero;
+
+
+

@@ -23,28 +23,24 @@ const ParallaxBg = ({className}:ClassName) => {
   }, [active])
 
   return (
-    <div className={twMerge("", className)}>
+    <div className={twMerge("w-screen h-screen overflow-hidden", className)}>
       <div
         className={twMerge(
           isDark 
             ? "bg-[url('/img/dark-lg-bg.png')] xl:bg-[url('/img/dark-xl-bg.png')] 2xl:bg-[url('/img/dark-2xl-bg.png')]" 
             : "bg-[url('/img/light-lg-bg.png')] xl:bg-[url('/img/light-xl-bg.png')] 2xl:bg-[url('/img/light-2xl-bg.png')]",
             
-          "bg-center bg-cover bg-no-repeat",
+          "bg-center bg-no-repeat",
           "transition-transform duration-200 ease-out",
-
-          "lg:-ml-[10px] lg:-mt-[10px]",
-          "xl:-ml-[20px] xl:-mt-[20px]",
-          "2xl:-ml-[40px] 2xl:-mt-[40px]",
           
-          "h-[1024px] w-[2446]", 
-          "lg:h-[1024px] lg:w-[2446px]", 
-          "xl:h-[1280px] xl:w-[3057px]", 
-          "2xl:h-[1536px] 2xl:w-[3668px]", 
-          "5xl:h-[1715px] 5xl:w-[4096px]", 
-          
+          "w-[105vw] h-[105vh]",
+          "object-cover",
+          "-ml-[2.5vw] -mt-[2.5vh]",
         )}
-        style={{transform: `translate(${mousePos.x * -0.02}px, ${mousePos.y * -0.02}px)`}}
+        style={{
+          transform: `translate(${mousePos.x * -0.02}px, ${mousePos.y * -0.02}px)`,
+          backgroundSize: 'cover',
+        }}
       />
     </div>
   )

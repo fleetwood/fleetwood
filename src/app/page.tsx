@@ -34,7 +34,7 @@ const roles:RoleProp[] = [
   },
   {
     role: "ally",
-    description: "Sonder makes me somber. I love people. I'm fascinated by other languages, cultures, art and cuisine. I love learning about history from old people and revolution from young people, and the music and Zeitgiest of both. I champion identity: the definition and the actualization of the Self, by the Self. That's the stuff.",
+    description: "I love people. I'm fascinated by other languages, cultures, art and cuisine. I love learning about history from old people and revolution from young people, and the music and Zeitgiest of both. I champion identity: the definition and the actualization of the Self, by the Self. That's the stuff.",
     img: { src: "/img/me-3.png", alt: "fleetwood being all friendly", width: 360, height: 360 },
   },
 ];
@@ -44,7 +44,7 @@ export default function Home() {
 
   return (
     <>
-      <div>Number of roles: {roles.length}</div> {/* Add this line */}
+      <h3 className="text-center font-semibold w-full py-4 bg-base-100/50 rounded-xl">I&apos;m Fleetwood</h3>
       <RoleHero items={roles} />
     </>
   );
