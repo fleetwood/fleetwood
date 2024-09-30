@@ -1,7 +1,6 @@
-import dayjs from "dayjs";
+import { timelineConfig, TimelineItemProps } from "@/types/props/timeline/TimelineProps";
 import LifeEvent from "./LifeEvent";
 import WorldEvent from "./WorldEvent";
-import { timelineConfig, TimelineItemProps } from "@/types/props/timeline/TimelineProps";
 
 const TimelineItem = ({lifeEvent, worldEvent, date}:TimelineItemProps) => {
   const isYear = date.month() === 0;
@@ -12,8 +11,8 @@ const TimelineItem = ({lifeEvent, worldEvent, date}:TimelineItemProps) => {
       key={date.toISOString()} 
       className="
         relative h-72 py-28 text-sm 
-        flex flex-col items-center justify-center
-        "
+        flex flex-col items-center justify-center cursor-default
+      "
       data-width={width}
       style={{minWidth: `${width}px`, maxWidth: `${width}px`}}
     >
