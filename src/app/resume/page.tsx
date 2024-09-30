@@ -14,7 +14,6 @@ export const metadata = {
 };
 
 export default async function ResumePage() {
-  // Changed to async function
   const history: Role[] = (await db
     .select()
     .from(roles)

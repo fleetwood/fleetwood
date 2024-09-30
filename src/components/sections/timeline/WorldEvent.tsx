@@ -15,7 +15,7 @@ const WorldEvent = ({item}:{item:TimelineEvent}) => {
       `} 
       style={{width: item.width!-5}}
     >
-      <div className="pointer-events-none">{item.title}</div>
+      <div className="pointer-events-none select-none">{item.title}</div>
     </div>
   );
 };

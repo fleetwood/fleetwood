@@ -1,6 +1,9 @@
+'use client'
+import React from 'react';
 import dayjs, { Dayjs } from "dayjs";
 import TimelineItem from "./TimelineItem";
 import { timelineConfig, TimelineEvent, TimelineItemProps } from "@/types/props/timeline/TimelineProps";
+import { useTimelineScroll } from '@/hooks/useTimelineScroll';
 
 const matchYearMonth = (date: Dayjs, match: Dayjs) => {
   return date.year() === match.year() && date.month() === match.month() 
@@ -12,6 +15,15 @@ type TimelineProps = {
 };
 
 const Timeline = ({ lifeEvents, worldEvents }: TimelineProps) => {
+  const {
+    timelineRef,
+    handleMouseDown,
+    handleMouseLeave,
+    handleMouseUp,
+    handleMouseMove,
+    handleClick,
+  } = useTimelineScroll();
+
   const monthWidth = timelineConfig.width.month;
   const yearWidth = timelineConfig.width.year;
 
@@ -58,12 +70,22 @@ const Timeline = ({ lifeEvents, worldEvents }: TimelineProps) => {
   }
 
   const timelineData: TimelineItemProps[] = getTimelineItems();
-  
+
   return (
-    <div className="w-full overflow-y-clip overflow-x-auto">
+    <div 
+      ref={timelineRef}
+      className="w-full overflow-y-clip overflow-x-hidden cursor-grab active:cursor-grabbing"
+      onMouseDown={handleMouseDown}
+      onMouseLeave={handleMouseLeave}
+      onMouseUp={handleMouseUp}
+      onMouseMove={handleMouseMove}
+      onClick={handleClick}
+    >
       <div className="flex flex-col gap-1"> 
         <div className={`calendar-item flex items-center text-base-content/50 w-[${monthWidth}px]`}>
-          {timelineData.map((item) => <TimelineItem key={item.date.toISOString()} {...item} />)}
+          {timelineData.map((item) => (
+            <TimelineItem key={item.date.toISOString()} {...item} />
+          ))}
         </div>
       </div>
     </div>
