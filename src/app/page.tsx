@@ -1,6 +1,5 @@
 import RoleHero from "@/components/sections/RoleHero";
 import { RoleProp } from "@/types/RoleProp";
-import { } from "next/font/local";
 
 export const metadata = {
   title: "Fleetwood | Hi!",
@@ -43,9 +42,10 @@ export default function Home() {
   console.log('Roles data:', roles); // Add this line for debugging
 
   return (
-    <>
-      <h3 className="text-center font-semibold w-full py-4 bg-base-100/50 rounded-xl">I&apos;m Fleetwood</h3>
+    <div className="p-4 w-full bg-base-100/50 rounded-xl">
+      <h3 className="text-center">Hi</h3>
+      <h2 className="text-center">I&apos;m Fleetwood</h2>
       <RoleHero items={roles} />
-    </>
+    </div>
   );
 }

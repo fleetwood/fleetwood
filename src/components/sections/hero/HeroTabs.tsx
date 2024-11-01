@@ -16,7 +16,7 @@ const HeroTabs = ({ lifeEvents, worldEvents }: { lifeEvents: TimelineEvent[], wo
         <TabSelect active={tab === "timeline"} tab="timeline" setTab={setTab}><IconTimeline />Timeline</TabSelect>
       </div>
 
-      {tab === "resume" && <ResumeComponent />}
+      {tab === "resume" && <ResumeComponent lifeEvents={lifeEvents} />}
       {tab === "timeline" && <Timeline lifeEvents={lifeEvents} worldEvents={worldEvents} />}
     </div>
   )

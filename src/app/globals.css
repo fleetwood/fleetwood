@@ -22,6 +22,17 @@
   }
 }
 
+@layer base {
+  body {
+    font-family: var(--font-oxygen);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-oswald);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
 h1 {
   @apply text-8xl font-extrabold;
 }
@@ -31,15 +42,22 @@ h2 {
 }
 
 h3 {
+  letter-spacing: -0.02em;
   @apply text-4xl font-thin;
 }
 
 h4 {
+  letter-spacing: -0.01em; /* Slightly tighter tracking for thin fonts */
   @apply text-2xl font-extralight;
 }
-
+}
 @layer components {
-
+  .pretty {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
   .bg-blur {
     @apply backdrop-filter backdrop-blur-sm
   }
