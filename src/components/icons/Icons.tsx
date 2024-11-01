@@ -1,16 +1,16 @@
 import { ClassName } from "@/types/ClassName";
 import { IconProps } from "@/types/props/IconProps";
-import { ChildContent } from "@/types/ReactChildren";
 import { SVGAttributes } from "react";
 import {
   LuExpand,
+  LuFileText,
   LuLightbulb,
   LuMonitorX,
   LuMoon,
   LuStopCircle,
   LuSun,
 } from "react-icons/lu";
-import { twMerge } from "tailwind-merge";
+import { FaTimeline } from "react-icons/fa6";
 
 export type SizeProps = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
@@ -59,13 +59,17 @@ export const IconExpand = (props: IconProps) => <LuExpand {...props} />;
 
 export const IconLightbulb = (props: IconProps) => <LuLightbulb {...props} />;
 
+export const IconMonitorX = (props: IconProps) => <LuMonitorX {...props} />;
+
 export const IconMoon = (props: IconProps) => <LuMoon {...props} />;
+
+export const IconResume = (props: IconProps) => <LuFileText {...props} />;
 
 export const IconStop = (props: IconProps) => <LuStopCircle {...props} />;
 
-export const IconSun = (props: IconProps) => <LuSun {...props} />;
+export const IconTimeline = (props: IconProps) => <FaTimeline {...props} />;
 
-export const IconMonitorX = (props: IconProps) => <LuMonitorX {...props} />;
+export const IconSun = (props: IconProps) => <LuSun {...props} />;
 
 export const FleetwoodLogo = (props: SvgProps) => (
   <SvgIcon fill={currentColor} viewBox="0 0 480 270" {...props}>
