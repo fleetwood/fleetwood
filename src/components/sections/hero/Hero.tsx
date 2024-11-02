@@ -8,6 +8,7 @@ type HeroProps = ChildContent &
     title: string;
     h2?: boolean
     h3?: boolean
+    h4?: boolean
   };
 
 const Hero = (props: HeroProps) => {
@@ -23,6 +24,7 @@ const Hero = (props: HeroProps) => {
     >
       {props.h2 ? <h2 className="text-center mt-0">{props.title}</h2>
       :props.h3 ? <h3 className="text-center mt-0">{props.title}</h3>
+      :props.h4 ? <h4 className="text-center mt-0">{props.title}</h4>
       : <h1 className="text-center mt-0">{props.title}</h1>
       }
       <div className="divider divider-primary-content"></div>

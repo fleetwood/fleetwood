@@ -44,7 +44,16 @@ const HeroDrawer = ({ className }: HeroDrawerProps) => {
           shadow-lg shadow-black
         ${isOpen ? 'scale-100' : 'scale-95'}
       `}>
-        <div className='flex justify-end w-full' onClick={() => setContent(null)}><div className="p-2 rounded-full bg-accent text-accent-content border-2 border-accent-content"><LuX className='w-full h-full' /></div></div>
+        <div className='flex justify-end w-full' onClick={() => setContent(null)}>
+          <div className="p-2 rounded-full cursor-pointer
+            bg-accent text-accent-content 
+            border-2 border-accent-content
+            hover:bg-base-100 hover:text-base-content
+            transition-all duration-200 ease-in-out
+            ">
+            <LuX className='w-full h-full' />
+          </div>
+        </div>
         {content}
       </div>
     </div>
