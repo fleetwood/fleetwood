@@ -7,17 +7,19 @@ import { ruid } from "../../../../@/lib/utils";
 import EventDetail from "../timeline/EventDetail";
 import { RoleIcon } from "../roles/RoleIcon";
 import { RoleTitle } from "../roles/RoleTitle";
+import EventHeader from "../timeline/EventHeader";
 
 type ResumeComponentProps = {
   lifeEvents: TimelineEvent[];
 }
 
 const ResumeComponent = ({ lifeEvents }: ResumeComponentProps) => {
-  const { setIsActive, setContent } = useHeroDrawerStore()
+  const { setIsActive, setContent, setHeader } = useHeroDrawerStore()
 
   const handleClick = (event: TimelineEvent) => {
     setIsActive(true)
     setContent(<EventDetail event={event} />)
+    setHeader(<EventHeader event={event} />)
   }
 
   return (
