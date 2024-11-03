@@ -70,8 +70,6 @@ export default async function ResumePage() {
     { startDate: '2021-08-11', title: 'First Jaguar' },
   ];
 
-  console.log('lifeEvents',lifeEvents)
-
   return (
     <Hero title="History" h2>
       <Quote author="Dr. Suess (kinda)">Oh, the places I&apos;ve been!</Quote>

@@ -3,7 +3,6 @@ import { RoleIcon } from "../roles/RoleIcon"
 import { RoleTitle } from "../roles/RoleTitle"
 
 const EventHeader = ({ event }: { event: TimelineEvent }) => {
-  console.log('EventDetail', event)
   return (
     <div role="event-header">
       <RoleIcon event={event} />

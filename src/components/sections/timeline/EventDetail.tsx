@@ -2,13 +2,8 @@ import { TimelineEvent } from "@/types/props/timeline/TimelineProps"
 import Quote from "../Quote"
 
 const EventDetail = ({event}:{event:TimelineEvent}) => {
-  console.log('EventDetail',event)
   return (
     <div>
-      {/* <div role="event-header">
-        <RoleIcon event={event} />
-        <RoleTitle event={event} />
-      </div> */}
       {event.highlight && <Quote>{event.highlight}</Quote>}
       {event.summary && 
         <div 

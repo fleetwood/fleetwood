@@ -1,4 +1,4 @@
-import { IconProps } from "@/types/props/IconProps";
+/* eslint-disable @next/next/no-img-element */
 import { TimelineEvent } from "@/types/props/timeline/TimelineProps";
 
 export const RoleIcon = ({ event }: { event: TimelineEvent }) => {

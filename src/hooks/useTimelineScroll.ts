@@ -70,9 +70,8 @@ export const useTimelineScroll = () => {
 
     const currentTime = Date.now();
     const remainingTime = Math.max(0, endTime - currentTime);
-    const progress = 1 - (remainingTime / 500); // 500ms total duration
+    const progress = 1 - (remainingTime / 500);
 
-    // Easing function (ease-out cubic)
     const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
 
     if (remainingTime > 0) {
@@ -85,7 +84,7 @@ export const useTimelineScroll = () => {
       setIsInertiaActive(false);
       setHeroActive(true);
     }
-  }, [endTime, endPosition, scrollLeft]);
+  }, [endTime, endPosition, scrollLeft, setHeroActive]);
 
   const handleClick = (e: React.MouseEvent) => {
     if (isDragging || isInertiaActive) {

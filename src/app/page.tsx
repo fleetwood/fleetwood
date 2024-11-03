@@ -39,8 +39,6 @@ const roles:RoleProp[] = [
 ];
 
 export default function Home() {
-  console.log('Roles data:', roles); // Add this line for debugging
-
   return (
     <div className="w-full bg-base-100/50 rounded-xl">
       <h3 className="text-center">Hi</h3>
