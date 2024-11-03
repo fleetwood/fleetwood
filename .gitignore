@@ -130,6 +130,4 @@ dist
 .pnp.*
 
 # Test files
-test.json
-test2.json
 test.html
