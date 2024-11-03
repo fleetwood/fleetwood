@@ -28,7 +28,7 @@ const HeroDrawer = ({ className }: HeroDrawerProps) => {
 
   return (
     <div className={`
-      fixed inset-0 shadow-lg z-50
+      fixed inset-0 shadow-lg z-50 backdrop-blur-md
       transition-all duration-300 ease-in-out
       ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
       flex items-center justify-center
@@ -37,7 +37,7 @@ const HeroDrawer = ({ className }: HeroDrawerProps) => {
       <div 
         ref={drawerRef}
         className={`
-          w-[calc(100%-4rem)] h-[calc(100%-4rem)]
+          w-full max-w-6xl
           bg-primary dark:bg-secondary rounded-lg p-4 
           overflow-y-auto overflow-x-hidden
           transition-all duration-300 ease-in-out
@@ -45,7 +45,7 @@ const HeroDrawer = ({ className }: HeroDrawerProps) => {
         ${isOpen ? 'scale-100' : 'scale-95'}
       `}>
         <div className='flex justify-end w-full' onClick={() => setContent(null)}>
-          <div className="p-2 rounded-full cursor-pointer
+          <div className="rounded-full cursor-pointer
             bg-accent text-accent-content 
             border-2 border-accent-content
             hover:bg-base-100 hover:text-base-content

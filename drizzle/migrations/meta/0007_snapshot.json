@@ -1,0 +1,157 @@
+{
+  "id": "f52b9e89-d003-49bc-993d-ba84643fd686",
+  "prevId": "67bb83eb-5619-4e94-8c7b-6a0303a1c7b1",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "bb_lrt7vp8u4l0rncolilviohmja4_h0a1n7_drizzle.users": {
+      "name": "users",
+      "schema": "bb_lrt7vp8u4l0rncolilviohmja4_h0a1n7_drizzle",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "avatar": {
+          "name": "avatar",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "color": {
+          "name": "color",
+          "type": "colors",
+          "typeSchema": "bb_lrt7vp8u4l0rncolilviohmja4_h0a1n7_drizzle",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'red'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "bb_lrt7vp8u4l0rncolilviohmja4_h0a1n7_drizzle.roles": {
+      "name": "roles",
+      "schema": "bb_lrt7vp8u4l0rncolilviohmja4_h0a1n7_drizzle",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "'0cf442d7-a8ec-4c36-803f-5ed8c9cd5a6a'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "startDate": {
+          "name": "startDate",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "endDate": {
+          "name": "endDate",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "icon": {
+          "name": "icon",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "summary": {
+          "name": "summary",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'I was here'"
+        },
+        "highlight": {
+          "name": "highlight",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {
+    "bb_lrt7vp8u4l0rncolilviohmja4_h0a1n7_drizzle.colors": {
+      "name": "colors",
+      "schema": "bb_lrt7vp8u4l0rncolilviohmja4_h0a1n7_drizzle",
+      "values": [
+        "red",
+        "green",
+        "blue"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

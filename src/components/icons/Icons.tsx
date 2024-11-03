@@ -2,6 +2,7 @@ import { ClassName } from "@/types/ClassName";
 import { IconProps } from "@/types/props/IconProps";
 import { SVGAttributes } from "react";
 import {
+  LuDownload,
   LuExpand,
   LuFileText,
   LuLightbulb,
@@ -54,6 +55,8 @@ export const SvgIcon = ({
     {children}
   </svg>
 );
+
+export const IconDownload = (props: IconProps) => <LuDownload {...props} />;
 
 export const IconExpand = (props: IconProps) => <LuExpand {...props} />;
 

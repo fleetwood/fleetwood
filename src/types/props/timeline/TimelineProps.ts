@@ -9,6 +9,7 @@ export type TimelineEvent = {
   icon     ?: string;
   width     ?: number
   duration  ?: number
+  highlight?: string|null;
 };
 
 export type TimelineItemProps = {

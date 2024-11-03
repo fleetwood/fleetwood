@@ -6,14 +6,14 @@ const Quote = ({ children, author }: { author?: string } & ChildContent) => {
   return (
     <div className="bg-black/50 text-white 
       text-center flex gap-4 justify-around
-      p-8 mx-auto my-4 md:w-1/2 rounded-lg 
+      p-8 mx-auto my-4 rounded-lg 
       ">
-      <LuQuote className="opacity-50 text-4xl text-accent scale-x-[-1]" />
+      <LuQuote className="opacity-50 min-h-16 min-w-16 text-accent scale-x-[-1]" />
       <div>
         <div className="italic text-2xl font-thin font-serif">{children}</div>
         {author && <div className="font-sans">- {author}</div>}
       </div>
-      <LuQuote className="opacity-50 text-4xl text-accent" />
+      <LuQuote className="opacity-50 min-h-16 min-w-16 text-accent" />
     </div>
   );
 };

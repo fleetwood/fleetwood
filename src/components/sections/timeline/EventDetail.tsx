@@ -1,12 +1,22 @@
 import { TimelineEvent } from "@/types/props/timeline/TimelineProps"
 import dayjs from "dayjs"
+import Quote from "../Quote"
+import { RoleIcon } from "../roles/RoleIcon"
+import { RoleTitle } from "../roles/RoleTitle"
 
 const EventDetail = ({event}:{event:TimelineEvent}) => {
+  console.log('EventDetail',event)
   return (
-    <div className="ml-6">
-      {event.subTitle && <h2 className="text-4xl">{event.subTitle}</h2>}
-      <h4 className="text-lg md:text-2xl">{event.title}</h4>
-      <div className="text-sm md:text-2xl">{event.startDate && dayjs(event.startDate).format('MMM YYYY - ')}{event.endDate && dayjs(event.endDate).format('MMM YYYY')}</div>
+    <div>
+      <RoleIcon event={event} />
+      <RoleTitle event={event} />
+      {event.highlight && <Quote>{event.highlight}</Quote>}
+      {event.summary && 
+        <div 
+          className="py-4 text-sm md:text-lg"
+          dangerouslySetInnerHTML={{ __html: event.summary }}
+        />
+      }
     </div>
   )
 }

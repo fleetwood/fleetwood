@@ -1,9 +1,6 @@
 import Hero from "@/components/sections/hero/Hero";
-import HeroDrawer from "@/components/sections/hero/HeroDrawer";
-import HeroTabs from "@/components/sections/hero/HeroTabs";
+import ResumeTabs from "@/components/sections/resume/ResumeTabs";
 import Quote from "@/components/sections/Quote";
-import ResumeComponent from "@/components/sections/resume/ResumeComponent";
-import Timeline from "@/components/sections/timeline/Timeline";
 import { db } from "@/db/index";
 import { roles } from "@/db/schema/roles";
 import { TimelineEvent } from "@/types/props/timeline/TimelineProps";
@@ -23,11 +20,10 @@ export default async function ResumePage() {
 
   const lifeEvents: TimelineEvent[] = history.map((role) => {
     return {
+      ...role,
       startDate: role.startDate.toString(),
       endDate: (role.endDate ?? new Date()).toString(),
-      title: role.title,
       subTitle: role.name,
-      summary: role.summary,
       icon: role.icon ?? undefined,
     };
   })
@@ -74,11 +70,12 @@ export default async function ResumePage() {
     { startDate: '2021-08-11', title: 'First Jaguar' },
   ];
 
+  console.log('lifeEvents',lifeEvents)
+
   return (
     <Hero title="History" h2>
       <Quote author="Dr. Suess (kinda)">Oh, the places I&apos;ve been!</Quote>
-      <HeroTabs lifeEvents={lifeEvents} worldEvents={worldEvents} />
-      <HeroDrawer />
+      <ResumeTabs lifeEvents={lifeEvents} worldEvents={worldEvents} />
     </Hero>
   );
 }
