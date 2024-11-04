@@ -1,6 +1,5 @@
-import RoleHero from "@/components/sections/RoleHero";
+import RoleHero from "@/components/sections/roles/RoleHero";
 import { RoleProp } from "@/types/RoleProp";
-import { } from "next/font/local";
 
 export const metadata = {
   title: "Fleetwood | Hi!",
@@ -34,13 +33,17 @@ const roles:RoleProp[] = [
   },
   {
     role: "ally",
-    description: "Sonder makes me somber. I love people. I'm fascinated by other languages, cultures, art and cuisine. I love learning about history from old people and revolution from young people, and the music and Zeitgiest of both. I champion identity: the definition and the actualization of the Self, by the Self. That's the stuff.",
+    description: "I love people. I'm fascinated by other languages, cultures, art and cuisine. I love learning about history from old people and revolution from young people, and the music and Zeitgiest of both. I champion identity: the definition and the actualization of the Self, by the Self. That's the stuff.",
     img: { src: "/img/me-3.png", alt: "fleetwood being all friendly", width: 360, height: 360 },
   },
 ];
 
 export default function Home() {
   return (
-    <RoleHero items={roles} />
+    <div className="w-full bg-base-100/50 rounded-xl">
+      <h3 className="text-center">Hi</h3>
+      <h2 className="text-center">I&apos;m Fleetwood</h2>
+      <RoleHero items={roles} />
+    </div>
   );
 }

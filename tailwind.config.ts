@@ -9,6 +9,10 @@ const config: Config = {
 	],
 	theme: {
     	extend: {
+        fontFamily: {
+          oxygen: ['var(--font-oxygen)'],
+          oswald: ['var(--font-oswald)'],
+        },
     		backgroundImage: {
     			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
     			'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
@@ -33,8 +37,8 @@ const config: Config = {
       {
         light: {
           "base-100": colors.light.base.DEFAULT,
-          primary   : colors.light.primary.DEFAULT,
-          secondary : colors.light.secondary.DEFAULT,
+          primary   : colors.light.secondary.DEFAULT,
+          secondary : colors.light.primary.DEFAULT,
           accent    : colors.light.accent.DEFAULT,
           success   : colors.light.success.DEFAULT,
           error     : colors.light.error.DEFAULT,

@@ -10,8 +10,8 @@ export const usePlxStore = create<PlxState>()(
   persist(
     (set) => ({
       active: false,
-      toggle: () => set((state) => ({
-        active: state.active = !state.active,
+      toggle: (b?: boolean) => set((state) => ({
+        active: b !== undefined ? b : !state.active,
       })),
     }),
     {

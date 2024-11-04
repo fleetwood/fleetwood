@@ -22,6 +22,17 @@
   }
 }
 
+@layer base {
+  body {
+    font-family: var(--font-oxygen);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-oswald);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
 h1 {
   @apply text-8xl font-extrabold;
 }
@@ -31,15 +42,22 @@ h2 {
 }
 
 h3 {
+  letter-spacing: -0.02em;
   @apply text-4xl font-thin;
 }
 
 h4 {
+  letter-spacing: -0.01em; /* Slightly tighter tracking for thin fonts */
   @apply text-2xl font-extralight;
 }
-
+}
 @layer components {
-
+  .pretty {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
   .bg-blur {
     @apply backdrop-filter backdrop-blur-sm
   }
@@ -75,5 +93,69 @@ h4 {
   .spacing-normal {
     letter-spacing: 0;
   }
+  
+  .select-none {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 
+  .box {
+    @apply relative bg-transparent;
+  }
+
+  .box:hover::before, .box:hover::after {
+    content   : "";
+    z-index   : -1;
+    position  : absolute;
+    width     : calc(100% + 6px);
+    height    : calc(100% + 6px);
+    top       : -3px;
+    left      : -3px;
+    @apply rounded-xl;
+  }
+
+  .box::before, .box::after {
+    background: linear-gradient(
+      15deg, 
+      #B6B137,
+      #04263D,
+      #B6B137
+    );
+    background-size: 400%;
+    animation: border 2s ease infinite;
+    transition: all 0.3s ease;
+  }
+
+  .box-dark::before, .box-dark::after {
+    background: linear-gradient(
+      15deg, 
+      #F2A1C4,
+      #68DBED,
+      #F2A1C4
+    );
+    background-size: 400%;
+    animation: border 2s ease infinite;
+    transition: all 0.3s ease;
+  }
+
+  .box::after {
+    filter: blur(20px);
+  }
+
+  @keyframes border {
+    0%, 100% {
+      background-position: 0% 100%;
+    }
+    50% {
+      background-position: 100% 0%;
+    }
+  }
+  .role-detail > ul {
+    @apply font-semibold;
+  }
+  .role-detail > ul > li > ul > li {
+    @apply list-disc list-inside text-sm;
+  }
 }

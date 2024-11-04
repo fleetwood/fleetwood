@@ -11,4 +11,5 @@ export const roles = dbSchema.table("roles", {
 	endDate  : timestamp("endDate"),
 	icon     : text("icon"),
 	summary  : text("summary").notNull().default('I was here'),
+	highlight: text("highlight"),
 });

@@ -36,6 +36,27 @@
       "when": 1725728070296,
       "tag": "0004_shallow_ultragirl",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1730581711676,
+      "tag": "0005_fat_rumiko_fujikawa",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1730581998120,
+      "tag": "0006_soft_zodiak",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1730582006128,
+      "tag": "0007_serious_post",
+      "breakpoints": true
     }
   ]
 }

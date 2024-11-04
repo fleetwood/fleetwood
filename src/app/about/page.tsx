@@ -1,4 +1,4 @@
-import Hero from "@/components/sections/Hero";
+import Hero from "@/components/sections/hero/Hero";
 import { } from "next/font/local";
 
 export const metadata = {
