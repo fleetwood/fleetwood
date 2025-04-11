@@ -1,6 +1,6 @@
 # John Fleetwood
 
-[Site](https://jfleetwood.vercel.app/) | [LinkedIn]([https://linkedin.com/jfleetwood](https://www.linkedin.com/in/jfleetwood/))
+[Site](https://jfleetwood.vercel.app/) | [LinkedIn]([https://linkedin.com/jfleetwood](https://www.linkedin.com/in/jfleetwood/)
 
 ## SKILLS
 
